@@ -99,7 +99,7 @@ module.exports = {
             template: resolve('../public/index.html'),
             inject: true,
             hash: true,
-            chunks: ['vendors'],
+            chunks: ['vendors', 'main'],
             favicon: resolve('../public/favicon.ico'),
             minify: true,
         }),
