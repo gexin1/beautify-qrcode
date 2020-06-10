@@ -1,0 +1,18 @@
+{
+    "root": true,
+    "parser": "babel-eslint",
+    "globals": {},
+    "parserOptions": {
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
+    },
+    "extends": ["standard", "prettier"],
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "rules": {
+        "no-new": "off"
+    },
+    "plugins": ["import", "promise", "compat", "html"]
+}
