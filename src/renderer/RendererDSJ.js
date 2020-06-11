@@ -1,8 +1,6 @@
-/* eslint-disable eqeqeq */
-
-import { ParamTypes } from '../../constant/ParamTypes';
-import { getTypeTable, QRPointType } from '../../utils/qrcodeHandler';
-import { createRenderer } from '../style/Renderer';
+import * as yup from 'yup';
+import { getTypeTable, QRPointType } from '../utils/qrcodeHandler';
+import { createRenderer } from '../utils/Renderer';
 
 function listPoints(qrcode, params) {
     if (!qrcode) return [];
@@ -35,82 +33,82 @@ function listPoints(qrcode, params) {
 
     for (let y = 0; y < nCount; y++) {
         for (let x = 0; x < nCount; x++) {
-            if (qrcode.isDark(x, y) == false) continue;
-            else if (typeTable[x][y] == QRPointType.POS_CENTER) {
-                if (posType == 0) {
+            if (qrcode.isDark(x, y) === false) continue;
+            else if (typeTable[x][y] === QRPointType.POS_CENTER) {
+                if (posType === 0) {
                     pointList.push(
-                        <rect
-                            width={1}
-                            height={1}
-                            key={id++}
+                        `<rect
+                            width="${1}"
+                            height="${1}"
+                            key="${id++}"
                             fill="#0B2D97"
-                            x={x}
-                            y={y}
-                        />
+                            x="${x}"
+                            y="${y}"
+                        />`
                     );
-                } else if (posType == 1) {
+                } else if (posType === 1) {
                     pointList.push(
-                        <rect
-                            width={3 - (1 - width3)}
-                            height={3 - (1 - width3)}
-                            key={id++}
+                        `<rect
+                            width="${3 - (1 - width3)}"
+                            height="${3 - (1 - width3)}"
+                            key="${id++}"
                             fill="#0B2D97"
-                            x={x - 1 + (1 - width3) / 2}
-                            y={y - 1 + (1 - width3) / 2}
-                        />
-                    );
-                    pointList.push(
-                        <rect
-                            width={width3}
-                            height={3 - (1 - width3)}
-                            key={id++}
-                            fill="#0B2D97"
-                            x={x - 3 + (1 - width3) / 2}
-                            y={y - 1 + (1 - width3) / 2}
-                        />
+                            x="${x - 1 + (1 - width3) / 2}"
+                            y="${y - 1 + (1 - width3) / 2}"
+                        />`
                     );
                     pointList.push(
-                        <rect
-                            width={width3}
-                            height={3 - (1 - width3)}
-                            key={id++}
+                        `<rect
+                            width="${width3}"
+                            height="${3 - (1 - width3)}"
+                            key="${id++}"
                             fill="#0B2D97"
-                            x={x + 3 + (1 - width3) / 2}
-                            y={y - 1 + (1 - width3) / 2}
-                        />
+                            x="${x - 3 + (1 - width3) / 2}"
+                            y="${y - 1 + (1 - width3) / 2}"
+                        />`
                     );
                     pointList.push(
-                        <rect
-                            width={3 - (1 - width3)}
-                            height={width3}
-                            key={id++}
+                        `<rect
+                            width="${width3}"
+                            height="${3 - (1 - width3)}"
+                            key="${id++}"
                             fill="#0B2D97"
-                            x={x - 1 + (1 - width3) / 2}
-                            y={y - 3 + (1 - width3) / 2}
-                        />
+                            x="${x + 3 + (1 - width3) / 2}"
+                            y="${y - 1 + (1 - width3) / 2}"
+                        />`
                     );
                     pointList.push(
-                        <rect
-                            width={3 - (1 - width3)}
-                            height={width3}
-                            key={id++}
+                        `<rect
+                            width="${3 - (1 - width3)}"
+                            height="${width3}"
+                            key="${id++}"
                             fill="#0B2D97"
-                            x={x - 1 + (1 - width3) / 2}
-                            y={y + 3 + (1 - width3) / 2}
-                        />
+                            x="${x - 1 + (1 - width3) / 2}"
+                            y="${y - 3 + (1 - width3) / 2}"
+                        />`
+                    );
+                    pointList.push(
+                        `<rect
+                            width="${3 - (1 - width3)}"
+                            height="${width3}"
+                            key="${id++}"
+                            fill="#0B2D97"
+                            x="${x - 1 + (1 - width3) / 2}"
+                            y="${y + 3 + (1 - width3) / 2}"
+                        />`
                     );
                 }
-            } else if (typeTable[x][y] == QRPointType.POS_OTHER) {
-                if (posType == 0) {
+            } else if (typeTable[x][y] === QRPointType.POS_OTHER) {
+                if (posType === 0) {
                     pointList.push(
-                        <rect
-                            width={1}
-                            height={1}
-                            key={id++}
+                        `<rect
+                            width="${1}"
+                            height="${1}"
+                            key="${id++}"
                             fill="#0B2D97"
-                            x={x}
-                            y={y}
-                        />
+                            x="${x}"
+                            y="${y}"
+                        />`
                     );
                 }
             } else {
@@ -136,28 +134,28 @@ function listPoints(qrcode, params) {
                         qrcode.isDark(x + 2, y + 2)
                     ) {
                         g1.push(
-                            <line
-                                key={id++}
-                                x1={x + width1 / Math.sqrt(8)}
-                                y1={y + width1 / Math.sqrt(8)}
-                                x2={x + 3 - width1 / Math.sqrt(8)}
-                                y2={y + 3 - width1 / Math.sqrt(8)}
+                            `<line
+                                key="${id++}"
+                                x1="${x + width1 / Math.sqrt(8)}"
+                                y1="${y + width1 / Math.sqrt(8)}"
+                                x2="${x + 3 - width1 / Math.sqrt(8)}"
+                                y2="${y + 3 - width1 / Math.sqrt(8)}"
                                 fill="none"
                                 stroke="#0B2D97"
-                                strokeWidth={width1}
-                            />
+                                strokeWidth="${width1}"
+                            />`
                         );
                         g1.push(
-                            <line
-                                key={id++}
-                                x1={x + 3 - width1 / Math.sqrt(8)}
-                                y1={y + width1 / Math.sqrt(8)}
-                                x2={x + width1 / Math.sqrt(8)}
-                                y2={y + 3 - width1 / Math.sqrt(8)}
+                            `<line
+                                key="${id++}"
+                                x1="${x + 3 - width1 / Math.sqrt(8)}"
+                                y1="${y + width1 / Math.sqrt(8)}"
+                                x2="${x + width1 / Math.sqrt(8)}"
+                                y2="${y + 3 - width1 / Math.sqrt(8)}"
                                 fill="none"
                                 stroke="#0B2D97"
-                                strokeWidth={width1}
-                            />
+                                strokeWidth="${width1}"
+                            />`
                         );
                         available[x][y] = false;
                         available[x + 2][y] = false;
@@ -192,28 +190,28 @@ function listPoints(qrcode, params) {
                         qrcode.isDark(x + 1, y + 1)
                     ) {
                         g1.push(
-                            <line
-                                key={id++}
-                                x1={x + width1 / Math.sqrt(8)}
-                                y1={y + width1 / Math.sqrt(8)}
-                                x2={x + 2 - width1 / Math.sqrt(8)}
-                                y2={y + 2 - width1 / Math.sqrt(8)}
+                            `<line
+                                key="${id++}"
+                                x1="${x + width1 / Math.sqrt(8)}"
+                                y1="${y + width1 / Math.sqrt(8)}"
+                                x2="${x + 2 - width1 / Math.sqrt(8)}"
+                                y2="${y + 2 - width1 / Math.sqrt(8)}"
                                 fill="none"
                                 stroke="#0B2D97"
-                                strokeWidth={width1}
-                            />
+                                strokeWidth="${width1}"
+                            />`
                         );
                         g1.push(
-                            <line
-                                key={id++}
-                                x1={x + 2 - width1 / Math.sqrt(8)}
-                                y1={y + width1 / Math.sqrt(8)}
-                                x2={x + width1 / Math.sqrt(8)}
-                                y2={y + 2 - width1 / Math.sqrt(8)}
+                            `<line
+                                key="${id++}"
+                                x1="${x + 2 - width1 / Math.sqrt(8)}"
+                                y1="${y + width1 / Math.sqrt(8)}"
+                                x2="${x + width1 / Math.sqrt(8)}"
+                                y2="${y + 2 - width1 / Math.sqrt(8)}"
                                 fill="none"
                                 stroke="#0B2D97"
-                                strokeWidth={width1}
-                            />
+                                strokeWidth="${width1}"
+                            />`
                         );
                         for (let i = 0; i < 2; i++) {
                             for (let j = 0; j < 2; j++) {
@@ -244,24 +242,24 @@ function listPoints(qrcode, params) {
                                 available[x][i] = false;
                             }
                             g2.push(
-                                <rect
-                                    width={width2}
-                                    height={end - start - 1 - (1 - width2)}
-                                    key={id++}
+                                `<rect
+                                    width="${width2}"
+                                    height="${end - start - 1 - (1 - width2)}"
+                                    key="${id++}"
                                     fill="#E02020"
-                                    x={x + (1 - width2) / 2}
-                                    y={y + (1 - width2) / 2}
-                                />
+                                    x="${x + (1 - width2) / 2}"
+                                    y="${y + (1 - width2) / 2}"
+                                />`
                             );
                             g2.push(
-                                <rect
-                                    width={width2}
-                                    height={width2}
-                                    key={id++}
+                                `<rect
+                                    width="${width2}"
+                                    height="${width2}"
+                                    key="${id++}"
                                     fill="#E02020"
-                                    x={x + (1 - width2) / 2}
-                                    y={end - 1 + (1 - width2) / 2}
-                                />
+                                    x="${x + (1 - width2) / 2}"
+                                    y="${end - 1 + (1 - width2) / 2}"
+                                />`
                             );
                         }
                     }
@@ -287,28 +285,28 @@ function listPoints(qrcode, params) {
                                 available[i][y] = false;
                             }
                             g2.push(
-                                <rect
-                                    width={end - start - (1 - width2)}
-                                    height={width2}
-                                    key={id++}
+                                `<rect
+                                    width="${end - start - (1 - width2)}"
+                                    height="${width2}"
+                                    key="${id++}"
                                     fill="#F6B506"
-                                    x={x + (1 - width2) / 2}
-                                    y={y + (1 - width2) / 2}
-                                />
+                                    x="${x + (1 - width2) / 2}"
+                                    y="${y + (1 - width2) / 2}"
+                                />`
                             );
                         }
                     }
                 }
                 if (available[x][y]) {
                     pointList.push(
-                        <rect
-                            width={width2}
-                            height={width2}
-                            key={id++}
+                        `<rect
+                            width="${width2}"
+                            height="${width2}"
+                            key="${id++}"
                             fill="#F6B506"
-                            x={x + (1 - width2) / 2}
-                            y={y + (1 - width2) / 2}
-                        />
+                            x="${x + (1 - width2) / 2}"
+                            y="${y + (1 - width2) / 2}"
+                        />`
                     );
                 }
             }
@@ -325,35 +323,34 @@ function listPoints(qrcode, params) {
     return pointList;
 }
 
-function getParamInfo() {
-    return [
-        {
-            type: ParamTypes.TEXT_EDITOR,
-            key: '信息点缩放',
-            default: 70,
-        },
-        {
-            type: ParamTypes.TEXT_EDITOR,
-            key: 'x 宽度',
-            default: 70,
-        },
-        {
-            type: ParamTypes.TEXT_EDITOR,
-            key: '定位点宽度',
-            default: 90,
-        },
-        {
-            type: ParamTypes.SELECTOR,
-            key: '定位点样式',
-            default: 1,
-            choices: ['矩形', 'DSJ'],
-        },
-    ];
-}
-
-const RenderDSJ = createRenderer({
-    listPoints: listPoints,
-    getParamInfo: getParamInfo,
+const schemaDSJ = yup.object().shape({
+    // 信息点缩放
+    width2: yup.number().default(70),
+    // x 宽度
+    width1: yup.number().default(70),
+    // 定位点宽度
+    width3: yup.number().default(90),
+    // 定位点样式 ['矩形', 'DSJ'],
+    posType: yup.mixed().oneOf([0, 1]).default(1),
 });
+
+const RenderDSJ = (qrcode, options) => {
+    try {
+        options = schemaDSJ.validateSync(options);
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+
+    const params = ['width2', 'width1', 'width3', 'posType'].map(
+        (k) => options[k]
+    );
+
+    const svg = createRenderer({
+        listPoints: listPoints,
+    })({ qrcode, params });
+
+    return svg;
+};
 
 export default RenderDSJ;

@@ -1,6 +1,3 @@
-/* eslint-disable eqeqeq */
-import { extend } from '../utils/util';
-
 export function createRenderer(renderer) {
     const defaultViewBox = function (qrcode) {
         if (!qrcode) return '0 0 0 0';
@@ -17,8 +14,8 @@ export function createRenderer(renderer) {
         );
     };
 
-    renderer = extend(
-        {
+    renderer = {
+        ...{
             getViewBox: defaultViewBox,
             listPoints: (qrcode, params) => {
                 return [];
@@ -30,11 +27,10 @@ export function createRenderer(renderer) {
             beforeListing: ({ qrcode, params, setParamInfo }) => {},
             afterListing: ({ qrcode, params, setParamInfo }) => {},
         },
-        renderer
-    );
+        ...renderer,
+    };
 
-    return ({ qrcode, params, setParamInfo }) => {
-        renderer.beginRendering({ qrcode, params, setParamInfo });
+    return ({ qrcode, params }) => {
         return `
             <svg className="Qr-item-svg" width="100%" height="100%" viewBox="${renderer.getViewBox(
                 qrcode

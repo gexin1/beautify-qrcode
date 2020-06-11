@@ -1,7 +1,5 @@
 /* eslint-disable eqeqeq */
 import { qrcode as QRCodeEncoder } from './qrcodeEncoder';
-import jsQR from 'jsqr';
-import { extend } from './util';
 
 export var QRPointType = {
     DATA: 0,
@@ -17,8 +15,8 @@ export var QRPointType = {
 export function encodeData(options) {
     if (!options.text || options.text.length <= 0) return null;
 
-    options = extend(
-        {
+    options = {
+        ...{
             render: 'canvas',
             width: 256,
             height: 256,
@@ -27,8 +25,8 @@ export function encodeData(options) {
             background: '#ffffff',
             foreground: '#000000',
         },
-        options
-    );
+        ...options,
+    };
 
     const qrcode = new QRCodeEncoder(options.typeNumber, options.correctLevel);
     qrcode.addData(options.text);
@@ -99,30 +97,4 @@ export function getTypeTable(qrcode) {
         }
     }
     return typeTable;
-}
-
-export function decodeData(file) {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    const img = document.createElement('img');
-    const maxSize = 400;
-
-    img.setAttribute('src', URL.createObjectURL(file));
-    return new Promise((resolve) => {
-        img.onload = () => {
-            const rate = Math.min(img.width, img.height) / maxSize;
-
-            canvas.width = img.width / rate;
-            canvas.height = img.height / rate;
-
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-            const result = jsQR(
-                ctx.getImageData(0, 0, canvas.width, canvas.height).data,
-                canvas.width,
-                canvas.height
-            );
-            resolve(result);
-        };
-    });
 }

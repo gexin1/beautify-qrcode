@@ -1,7 +1,6 @@
-/* eslint-disable eqeqeq */
-import { ParamTypes } from '../constant/ParamTypes';
+import * as yup from 'yup';
 import { getTypeTable, QRPointType } from '../utils/qrcodeHandler';
-import { createRenderer } from '../style/Renderer';
+import { createRenderer } from '../utils/Renderer';
 
 function listPoints(qrcode, params) {
     if (!qrcode) return [];
@@ -43,31 +42,31 @@ function listPoints(qrcode, params) {
 
     for (let x = 0; x < nCount; x++) {
         for (let y = 0; y < nCount; y++) {
-            if (qrcode.isDark(x, y) == false) continue;
+            if (qrcode.isDark(x, y) === false) continue;
             else if (
-                typeTable[x][y] == QRPointType.POS_OTHER ||
-                typeTable[x][y] == QRPointType.POS_CENTER
+                typeTable[x][y] === QRPointType.POS_OTHER ||
+                typeTable[x][y] === QRPointType.POS_CENTER
             ) {
                 pointList.push(
-                    <rect
-                        width={size2}
-                        height={size2}
-                        key={id++}
-                        fill={upColor}
-                        x={x + (1 - size2) / 2}
-                        y={y + (1 - size2) / 2}
-                        transform={matrixString}
-                    />
+                    `<rect
+                        width="${size2}"
+                        height="${size2}"
+                        key="${id++}"
+                        fill="${upColor}"
+                        x="${x + (1 - size2) / 2}"
+                        y="${y + (1 - size2) / 2}"
+                        transform="${matrixString}"
+                    />`
                 );
                 pointList.push(
-                    <rect
-                        width={height2}
-                        height={size2}
-                        key={id++}
-                        fill={leftColor}
-                        x={0}
-                        y={0}
-                        transform={
+                    `<rect
+                        width="${height2}"
+                        height="${size2}"
+                        key="${id++}"
+                        fill="${leftColor}"
+                        x="${0}"
+                        y="${0}"
+                        transform="${
                             matrixString +
                             'translate(' +
                             String(x + (1 - size2) / 2 + size2) +
@@ -75,18 +74,18 @@ function listPoints(qrcode, params) {
                             String(y + (1 - size2) / 2) +
                             ') ' +
                             'skewY(45) '
-                        }
-                    />
+                        }"
+                    />`
                 );
                 pointList.push(
-                    <rect
-                        width={size2}
-                        height={height2}
-                        key={id++}
-                        fill={rightColor}
-                        x={0}
-                        y={0}
-                        transform={
+                    `<rect
+                        width="${size2}"
+                        height="${height2}"
+                        key="${id++}"
+                        fill="${rightColor}"
+                        x="${0}"
+                        y="${0}"
+                        transform="${
                             matrixString +
                             'translate(' +
                             String(x + (1 - size2) / 2) +
@@ -94,30 +93,30 @@ function listPoints(qrcode, params) {
                             String(y + size2 + (1 - size2) / 2) +
                             ') ' +
                             'skewX(45) '
-                        }
-                    />
+                        }"
+                    />`
                 );
             } else {
                 pointList.push(
-                    <rect
-                        width={size}
-                        height={size}
-                        key={id++}
-                        fill={upColor}
-                        x={x + (1 - size) / 2}
-                        y={y + (1 - size) / 2}
-                        transform={matrixString}
-                    />
+                    `<rect
+                        width="${size}"
+                        height="${size}"
+                        key="${id++}"
+                        fill="${upColor}"
+                        x="${x + (1 - size) / 2}"
+                        y="${y + (1 - size) / 2}"
+                        transform="${matrixString}"
+                    />`
                 );
                 pointList.push(
-                    <rect
-                        width={height}
-                        height={size}
-                        key={id++}
-                        fill={leftColor}
-                        x={0}
-                        y={0}
-                        transform={
+                    `<rect
+                        width="${height}"
+                        height="${size}"
+                        key="${id++}"
+                        fill="${leftColor}"
+                        x="${0}"
+                        y="${0}"
+                        transform="${
                             matrixString +
                             'translate(' +
                             String(x + (1 - size) / 2 + size) +
@@ -125,18 +124,18 @@ function listPoints(qrcode, params) {
                             String(y + (1 - size) / 2) +
                             ') ' +
                             'skewY(45) '
-                        }
-                    />
+                        }"
+                    />`
                 );
                 pointList.push(
-                    <rect
-                        width={size}
-                        height={height}
-                        key={id++}
-                        fill={rightColor}
-                        x={0}
-                        y={0}
-                        transform={
+                    `<rect
+                        width="${size}"
+                        height="${height}"
+                        key="${id++}"
+                        fill="${rightColor}"
+                        x="${0}"
+                        y="${0}"
+                        transform="${
                             matrixString +
                             'translate(' +
                             String(x + (1 - size) / 2) +
@@ -144,8 +143,8 @@ function listPoints(qrcode, params) {
                             String(y + size + (1 - size) / 2) +
                             ') ' +
                             'skewX(45) '
-                        }
-                    />
+                        }"
+                    />`
                 );
             }
         }
@@ -154,35 +153,18 @@ function listPoints(qrcode, params) {
     return pointList;
 }
 
-function getParamInfo() {
-    return [
-        {
-            type: ParamTypes.TEXT_EDITOR,
-            key: '柱体高度',
-            default: 0.5,
-        },
-        {
-            type: ParamTypes.TEXT_EDITOR,
-            key: '定位点柱体高度',
-            default: 0.5,
-        },
-        {
-            type: ParamTypes.COLOR_EDITOR,
-            key: '上侧颜色',
-            default: '#FF7F89',
-        },
-        {
-            type: ParamTypes.COLOR_EDITOR,
-            key: '左侧颜色',
-            default: '#FFD7D9',
-        },
-        {
-            type: ParamTypes.COLOR_EDITOR,
-            key: '右侧颜色',
-            default: '#FFEBF3',
-        },
-    ];
-}
+const schema25D = yup.object().shape({
+    // 柱体高度
+    height: yup.number().default(0.5),
+    // 定位点柱体高度
+    height2: yup.number().default(0.5),
+    // 上侧颜色
+    upColor: yup.string().default('#FF7F89'),
+    // 左侧颜色
+    leftColor: yup.string().default('#FFD7D9'),
+    // 右侧颜色
+    rightColor: yup.string().default('#FFEBF3'),
+});
 
 function viewBox(qrcode) {
     if (!qrcode) return '0 0 0 0';
@@ -199,10 +181,28 @@ function viewBox(qrcode) {
     );
 }
 
-const Renderer25D = createRenderer({
-    listPoints: listPoints,
-    getParamInfo: getParamInfo,
-    getViewBox: viewBox,
-});
+const Renderer25D = (qrcode, options) => {
+    try {
+        options = schema25D.validateSync(options);
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+
+    const params = [
+        'height',
+        'height2',
+        'upColor',
+        'leftColor',
+        'rightColor',
+    ].map((k) => options[k]);
+
+    const svg = createRenderer({
+        listPoints: listPoints,
+        getViewBox: viewBox,
+    })({ qrcode, params });
+
+    return svg;
+};
 
 export default Renderer25D;

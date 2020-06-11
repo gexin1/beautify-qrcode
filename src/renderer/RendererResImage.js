@@ -1,9 +1,7 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable no-unused-vars */
-import { gamma } from '../../utils/imageUtils';
-import { ParamTypes } from '../../constant/ParamTypes';
-import { getTypeTable, QRPointType } from '../../utils/qrcodeHandler';
-import { defaultResImage } from '../../constant/References';
+import * as yup from 'yup';
+import { gamma } from '../utils/imageUtils';
+import { getTypeTable, QRPointType } from '../utils/qrcodeHandler';
+import { defaultResImage } from '../constant/References';
 
 function listPoints(qrcode, params) {
     if (!qrcode) return [];
@@ -11,11 +9,11 @@ function listPoints(qrcode, params) {
     const nCount = qrcode.getModuleCount();
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
-    const contrast = params[1];
-    const exposure = params[2];
+    // const contrast = params[1];
+    // const exposure = params[2];
     const alignType = params[3];
     const timingType = params[4];
-    const otherColor = params[5];
+    // const otherColor = params[5];
     const posColor = params[6];
 
     let id = 0;
@@ -24,134 +22,134 @@ function listPoints(qrcode, params) {
             const posX = 3 * x;
             const posY = 3 * y;
             if (
-                typeTable[x][y] == QRPointType.ALIGN_CENTER ||
-                typeTable[x][y] == QRPointType.ALIGN_OTHER
+                typeTable[x][y] === QRPointType.ALIGN_CENTER ||
+                typeTable[x][y] === QRPointType.ALIGN_OTHER
             ) {
                 if (qrcode.isDark(x, y)) {
                     if (alignType === 2) {
                         pointList.push(
-                            <use
-                                key={id++}
-                                xlinkHref="#B-black"
-                                x={posX - 0.03}
-                                y={posY - 0.03}
-                            />
+                            `<use
+                                key="${id++}"
+                                xlink:href="#B-black"
+                                x="${posX - 0.03}"
+                                y="${posY - 0.03}"
+                            />`
                         );
                     } else {
                         pointList.push(
-                            <use
-                                key={id++}
-                                xlinkHref="#S-black"
-                                x={posX + 1 - 0.01}
-                                y={posY + 1 - 0.01}
-                            />
+                            `<use
+                                key="${id++}"
+                                xlink:href="#S-black"
+                                x="${posX + 1 - 0.01}"
+                                y="${posY + 1 - 0.01}"
+                            />`
                         );
                     }
                 } else {
                     if (alignType === 0) {
                         pointList.push(
-                            <use
-                                key={id++}
-                                xlinkHref="#S-white"
-                                x={posX + 1}
-                                y={posY + 1}
-                            />
+                            `<use
+                                key="${id++}"
+                                xlink:href="#S-white"
+                                x="${posX + 1}"
+                                y="${posY + 1}"
+                            />`
                         );
                     } else {
                         pointList.push(
-                            <use
-                                key={id++}
-                                xlinkHref="#B-white"
-                                x={posX - 0.03}
-                                y={posY - 0.03}
-                            />
+                            `<use
+                                key="${id++}"
+                                xlink:href="#B-white"
+                                x="${posX - 0.03}"
+                                y="${posY - 0.03}"
+                            />`
                         );
                     }
                 }
-            } else if (typeTable[x][y] == QRPointType.TIMING) {
+            } else if (typeTable[x][y] === QRPointType.TIMING) {
                 if (qrcode.isDark(x, y)) {
                     if (timingType === 2) {
                         pointList.push(
-                            <use
-                                key={id++}
-                                xlinkHref="#B-black"
-                                x={posX - 0.03}
-                                y={posY - 0.03}
-                            />
+                            `<use
+                                key="${id++}"
+                                xlink:href="#B-black"
+                                x="${posX - 0.03}"
+                                y="${posY - 0.03}"
+                            />`
                         );
                     } else {
                         pointList.push(
-                            <use
-                                key={id++}
-                                xlinkHref="#S-black"
-                                x={posX + 1}
-                                y={posY + 1}
-                            />
+                            `<use
+                                key="${id++}"
+                                xlink:href="#S-black"
+                                x="${posX + 1}"
+                                y="${posY + 1}"
+                            />`
                         );
                     }
                 } else {
                     if (timingType === 0) {
                         pointList.push(
-                            <use
-                                key={id++}
-                                xlinkHref="#S-white"
-                                x={posX + 1}
-                                y={posY + 1}
-                            />
+                            `<use
+                                key="${id++}"
+                                xlink:href="#S-white"
+                                x="${posX + 1}"
+                                y="${posY + 1}"
+                            />`
                         );
                     } else {
                         pointList.push(
-                            <use
-                                key={id++}
-                                xlinkHref="#B-white"
-                                x={posX - 0.03}
-                                y={posY - 0.03}
-                            />
+                            `<use
+                                key="${id++}"
+                                xlink:href="#B-white"
+                                x="${posX - 0.03}"
+                                y="${posY - 0.03}"
+                            />`
                         );
                     }
                 }
-            } else if (typeTable[x][y] == QRPointType.POS_CENTER) {
+            } else if (typeTable[x][y] === QRPointType.POS_CENTER) {
                 if (qrcode.isDark(x, y)) {
                     pointList.push(
-                        <use
-                            key={id++}
-                            fill={posColor}
-                            xlinkHref="#B"
-                            x={posX - 0.03}
-                            y={posY - 0.03}
-                        />
+                        `<use
+                            key="${id++}"
+                            fill="${posColor}"
+                            xlink:href="#B"
+                            x="${posX - 0.03}"
+                            y="${posY - 0.03}"
+                        />`
                     );
                 }
-            } else if (typeTable[x][y] == QRPointType.POS_OTHER) {
+            } else if (typeTable[x][y] === QRPointType.POS_OTHER) {
                 if (qrcode.isDark(x, y)) {
                     pointList.push(
-                        <use
-                            key={id++}
-                            fill={posColor}
-                            xlinkHref="#B"
-                            x={posX - 0.03}
-                            y={posY - 0.03}
-                        />
+                        `<use
+                            key="${id++}"
+                            fill="${posColor}"
+                            xlink:href="#B"
+                            x="${posX - 0.03}"
+                            y="${posY - 0.03}"
+                        />`
                     );
                 } else {
                     pointList.push(
-                        <use
-                            key={id++}
-                            xlinkHref="#B-white"
-                            x={posX - 0.03}
-                            y={posY - 0.03}
-                        />
+                        `<use
+                            key="${id++}"
+                            xlink:href="#B-white"
+                            x="${posX - 0.03}"
+                            y="${posY - 0.03}"
+                        />`
                     );
                 }
             } else {
                 if (qrcode.isDark(x, y)) {
                     pointList.push(
-                        <use
-                            key={id++}
-                            xlinkHref="#S-black"
-                            x={posX + 1}
-                            y={posY + 1}
-                        />
+                        `<use
+                            key="${id++}"
+                            xlink:href="#S-black"
+                            x="${posX + 1}"
+                            y="${posY + 1}"
+                        />`
                     );
                 }
             }
@@ -159,48 +157,6 @@ function listPoints(qrcode, params) {
     }
 
     return pointList;
-}
-
-function getParamInfo() {
-    return [
-        {
-            type: ParamTypes.UPLOAD_BUTTON,
-            key: '背景图片',
-            default: defaultResImage,
-        },
-        {
-            type: ParamTypes.TEXT_EDITOR,
-            key: '对比度',
-            default: 0,
-        },
-        {
-            type: ParamTypes.TEXT_EDITOR,
-            key: '曝光',
-            default: 0,
-        },
-        {
-            type: ParamTypes.SELECTOR,
-            key: '小定位点样式',
-            default: 0,
-            choices: ['无', '白', '黑白'],
-        },
-        {
-            type: ParamTypes.SELECTOR,
-            key: '时钟样式',
-            default: 0,
-            choices: ['无', '白', '黑白'],
-        },
-        {
-            type: ParamTypes.COLOR_EDITOR,
-            key: '信息点颜色',
-            default: '#000000',
-        },
-        {
-            type: ParamTypes.COLOR_EDITOR,
-            key: '定位点颜色',
-            default: '#000000',
-        },
-    ];
 }
 
 function getViewBox(qrcode) {
@@ -248,12 +204,12 @@ function getGrayPointList(params, size, black, white) {
                         (x % 3 !== 1 || y % 3 !== 1)
                     )
                         gpl.push(
-                            <use
-                                key={'g_' + x + '_' + y}
-                                x={x}
-                                y={y}
-                                xlinkHref={black}
-                            />
+                            `<use
+                                key="${'g_' + x + '_' + y}"
+                                x="${x}"
+                                y="${y}"
+                                xlink:href="${black}"
+                            />`
                         );
                 }
             }
@@ -262,25 +218,21 @@ function getGrayPointList(params, size, black, white) {
     });
 }
 
-const RendererResImage = ({ qrcode, params, setParamInfo }) => {
+const RendererResImage = ({ qrcode, params }) => {
     const otherColor = params[5];
-
-    const gpl = [];
-    // const [gpl, setGPL] = useState([]);
-
-    // getGrayPointList(
-    //     params,
-    //     qrcode.getModuleCount(),
-    //     '#S-black',
-    //     '#S-white'
-    // ).then((res) => setGPL(res));
-
-    return (
-        <svg
+    return new Promise((resolve, reject) => {
+        getGrayPointList(
+            params,
+            qrcode.getModuleCount(),
+            '#S-black',
+            '#S-white'
+        )
+            .then((gpl) => {
+                const svg = `<svg
             className="Qr-item-svg"
             width="100%"
             height="100%"
-            viewBox={getViewBox(qrcode)}
+            viewBox="${getViewBox(qrcode)}"
             fill="white"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -288,24 +240,67 @@ const RendererResImage = ({ qrcode, params, setParamInfo }) => {
             <defs>
                 <rect
                     id="B-black"
-                    fill={otherColor}
-                    width={3.08}
-                    height={3.08}
+                    fill="${otherColor}"
+                    width="${3.08}"
+                    height="${3.08}"
                 />
-                <rect id="B-white" fill="white" width={3.08} height={3.08} />
+                <rect id="B-white" fill="white" width="${3.08}" height="${3.08}" />
                 <rect
                     id="S-black"
-                    fill={otherColor}
-                    width={1.02}
-                    height={1.02}
+                    fill="${otherColor}"
+                    width="${1.02}"
+                    height="${1.02}"
                 />
-                <rect id="S-white" fill="white" width={1.02} height={1.02} />
-                <rect id="B" width={3.08} height={3.08} />
-                <rect id="S" width={1.02} height={1.02} />
+                <rect id="S-white" fill="white" width="${1.02}" height="${1.02}" />
+                <rect id="B" width="${3.08}" height="${3.08}" />
+                <rect id="S" width="${1.02}" height="${1.02}" />
             </defs>
-            {gpl.concat(listPoints(qrcode, params))}
-        </svg>
-    );
+            ${gpl.concat(listPoints(qrcode, params))}
+        </svg>`;
+                resolve(svg);
+            })
+            .catch((err) => {
+                resolve(err);
+            });
+    });
 };
 
-export default RendererResImage;
+const schemaResImage = yup.object().shape({
+    // 背景图片
+    backgroudImage: yup.string().default(defaultResImage),
+    // 对比度
+    contrast: yup.number().default(0),
+    // 曝光
+    exposure: yup.number().default(0),
+    // 小定位点样式 ['无', '白', '黑白']
+    alignType: yup.mixed().oneOf([0, 1, 2]).default(0),
+    // 时钟样式 ['无', '白', '黑白']
+    timingType: yup.mixed().oneOf([0, 1, 2]).default(0),
+    // 信息点颜色
+    otherColor: yup.string().default('#000000'),
+    // 定位点颜色
+    posColor: yup.string().default('#000000'),
+});
+
+const render = (qrcode, options = {}) => {
+    try {
+        options = schemaResImage.validateSync(options);
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
+
+    const params = [
+        'backgroudImage',
+        'contrast',
+        'exposure',
+        'alignType',
+        'timingType',
+        'otherColor',
+        'posColor',
+    ].map((k) => options[k]);
+
+    return RendererResImage({ qrcode, params });
+};
+
+export default render;

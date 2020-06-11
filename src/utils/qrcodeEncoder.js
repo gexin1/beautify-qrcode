@@ -1285,4 +1285,4 @@ QRBitBuffer.prototype = {
     },
 };
 
-exports.qrcode = QRCode;
+export { QRCode as qrcode };
