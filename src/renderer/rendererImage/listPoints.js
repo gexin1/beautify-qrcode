@@ -1,9 +1,6 @@
-import * as yup from 'yup';
-import { getTypeTable, QRPointType } from '../utils/qrcodeHandler';
-import { createRenderer } from '../utils/Renderer';
-import { defaultImage } from '../constant/References';
+import { getTypeTable, QRPointType } from '@/utils/qrcodeHandler';
 
-function listPoints(qrcode, params) {
+export default function listPoints(qrcode, params) {
     if (!qrcode) return [];
 
     const nCount = qrcode.getModuleCount();
@@ -273,50 +270,3 @@ function listPoints(qrcode, params) {
 
     return pointList;
 }
-
-const schemaImage = yup.object().shape({
-    // 背景图片
-    backgroudImage: yup.string().default(defaultImage),
-    // 信息点样式 ['矩形', '圆形'],
-    type: yup.mixed().oneOf([0, 1, 2]).default(0),
-    // 信息点缩放
-    size: yup.number().default(100),
-    // 信息点不透明度
-    opacity: yup.number().default(100),
-    // 信息点深色
-    otherColorDark: yup.string().default('#000000'),
-    // 信息点浅色
-    otherColorLight: yup.string().default('#000000'),
-    // 定位点样式 ['矩形', '圆形', '行星']
-    posType: yup.mixed().oneOf([0, 1, 2]).default(0),
-    // 定位点颜色
-    posColor: yup.string().default('#000000'),
-});
-
-const RendererImage = (qrcode, options = {}) => {
-    try {
-        options = schemaImage.validateSync(options);
-    } catch (err) {
-        console.log(err);
-        return err;
-    }
-
-    const params = [
-        'backgroudImage',
-        'type',
-        'size',
-        'opacity',
-        'otherColorDark',
-        'otherColorLight',
-        'posType',
-        'posColor',
-    ].map((k) => options[k]);
-
-    const svg = createRenderer({
-        listPoints: listPoints,
-    })({ qrcode, params });
-
-    return svg;
-};
-
-export default RendererImage;

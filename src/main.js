@@ -2,12 +2,12 @@ import {
     RendererRect,
     RendererRound,
     RendererRandRound,
-} from './renderer/RendererBase';
-import RendererDSJ from './renderer/RendererDSJ';
-import RendererRandRect from './renderer/RendererRandRect';
-import Renderer25D from './renderer/Renderer25D';
-import RendererImage from './renderer/RendererImage';
-import RendererResImage from './renderer/RendererResImage';
+} from './renderer/rendererBase';
+import RendererDSJ from './renderer/rendererDSJ';
+import RendererRandRect from './renderer/rendererRandRect';
+import Renderer25D from './renderer/renderer25D';
+import RendererImage from './renderer/rendererImage';
+import RendererResImage from './renderer/rendererResImage';
 import { encodeData } from './utils/qrcodeHandler';
 
 import './style/base.css';

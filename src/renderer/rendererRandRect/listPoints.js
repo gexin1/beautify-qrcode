@@ -1,7 +1,6 @@
-import { rand } from '../utils/util';
-import { createRenderer } from '../utils/Renderer';
+import { rand } from '@/utils/util';
 
-function listPoints(qrcode, params) {
+export default function listPoints(qrcode, params) {
     if (!qrcode) return [];
 
     const nCount = qrcode.getModuleCount();
@@ -66,11 +65,3 @@ function listPoints(qrcode, params) {
     }
     return pointList;
 }
-
-const RendererRandRect = (qrcode) => {
-    const svg = createRenderer({
-        listPoints: listPoints,
-    })({ qrcode });
-    return svg;
-};
-export default RendererRandRect;

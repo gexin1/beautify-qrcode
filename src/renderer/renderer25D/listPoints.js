@@ -1,8 +1,6 @@
-import * as yup from 'yup';
-import { getTypeTable, QRPointType } from '../utils/qrcodeHandler';
-import { createRenderer } from '../utils/Renderer';
+import { getTypeTable, QRPointType } from '@/utils/qrcodeHandler';
 
-function listPoints(qrcode, params) {
+export default function listPoints(qrcode, params) {
     if (!qrcode) return [];
 
     const nCount = qrcode.getModuleCount();
@@ -152,57 +150,3 @@ function listPoints(qrcode, params) {
 
     return pointList;
 }
-
-const schema25D = yup.object().shape({
-    // 柱体高度
-    height: yup.number().default(0.5),
-    // 定位点柱体高度
-    height2: yup.number().default(0.5),
-    // 上侧颜色
-    upColor: yup.string().default('#FF7F89'),
-    // 左侧颜色
-    leftColor: yup.string().default('#FFD7D9'),
-    // 右侧颜色
-    rightColor: yup.string().default('#FFEBF3'),
-});
-
-function viewBox(qrcode) {
-    if (!qrcode) return '0 0 0 0';
-
-    const nCount = qrcode.getModuleCount();
-    return (
-        String(-nCount) +
-        ' ' +
-        String(-nCount / 2) +
-        ' ' +
-        String(nCount * 2) +
-        ' ' +
-        String(nCount * 2)
-    );
-}
-
-const Renderer25D = (qrcode, options) => {
-    try {
-        options = schema25D.validateSync(options);
-    } catch (err) {
-        console.log(err);
-        return err;
-    }
-
-    const params = [
-        'height',
-        'height2',
-        'upColor',
-        'leftColor',
-        'rightColor',
-    ].map((k) => options[k]);
-
-    const svg = createRenderer({
-        listPoints: listPoints,
-        getViewBox: viewBox,
-    })({ qrcode, params });
-
-    return svg;
-};
-
-export default Renderer25D;

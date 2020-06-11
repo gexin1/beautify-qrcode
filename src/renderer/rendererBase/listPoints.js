@@ -1,9 +1,7 @@
-import * as yup from 'yup';
-import { getTypeTable, QRPointType } from '../utils/qrcodeHandler';
-import { createRenderer } from '../utils/Renderer';
-import { rand } from '../utils/util';
+import { getTypeTable, QRPointType } from '@/utils/qrcodeHandler';
+import { rand } from '@/utils/util';
 
-function listPoints(qrcode, params) {
+export default function listPoints(qrcode, params) {
     if (!qrcode) return [];
 
     const nCount = qrcode.getModuleCount();
@@ -196,81 +194,3 @@ function listPoints(qrcode, params) {
     }
     return pointList;
 }
-
-const schemaBase = yup.object().shape({
-    // 信息点样式 ['矩形', '圆形', '随机']
-    type: yup.mixed().oneOf([0, 1, 2]).default(0),
-    // 信息点缩放
-    size: yup.number().default(100),
-    // 信息点不透明度
-    opacity: yup.number().default(100),
-    // 定位点样式['矩形', '圆形', '行星']
-    posType: yup.mixed().oneOf([0, 1, 2]).default(0),
-    // 信息点颜色
-    otherColor: yup.string().default('#000000'),
-    // 定位点点颜色
-    posColor: yup.string().default('#000000'),
-});
-
-const RendererBase = (qrcode, options) => {
-    try {
-        options = schemaBase.validateSync(options);
-    } catch (err) {
-        console.log(err);
-        return err;
-    }
-
-    const params = [
-        'type',
-        'size',
-        'opacity',
-        'posType',
-        'otherColor',
-        'posColor',
-    ].map((k) => options[k]);
-
-    const svg = createRenderer({
-        listPoints: listPoints,
-    })({ qrcode, params });
-
-    return svg;
-};
-
-export const RendererRect = (qrcode, options = {}) => {
-    options = {
-        ...{
-            type: 0,
-            size: 100,
-            opacity: 100,
-            posType: 0,
-        },
-        ...options,
-    };
-    return RendererBase(qrcode, options);
-};
-
-export const RendererRound = (qrcode, options = {}) => {
-    options = {
-        ...{
-            type: 1,
-            size: 50,
-            opacity: 30,
-            posType: 1,
-        },
-        ...options,
-    };
-    return RendererBase(qrcode, options);
-};
-
-export const RendererRandRound = (qrcode, options = {}) => {
-    options = {
-        ...{
-            type: 2,
-            size: 80,
-            opacity: 100,
-            posType: 2,
-        },
-        ...options,
-    };
-    return RendererBase(qrcode, options);
-};

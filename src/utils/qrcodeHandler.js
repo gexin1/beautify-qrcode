@@ -12,6 +12,18 @@ export var QRPointType = {
     VERSION: 7,
 };
 
+/**
+ * 生成二维码数据
+ * @param {Object} options
+ * @param {String} options.text 二维码内容
+ * @param {String} [options.render]
+ * @param {Number} [options.width]
+ * @param {Number} [options.height]
+ * @param {Number} [options.typeNumber]
+ * @param {Number} [options.correctLevel]
+ * @param {String} [options.background]
+ * @param {String} [options.foreground]
+ */
 export function encodeData(options) {
     if (!options.text || options.text.length <= 0) return null;
 

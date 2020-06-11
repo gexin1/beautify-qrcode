@@ -1,8 +1,6 @@
-import * as yup from 'yup';
-import { getTypeTable, QRPointType } from '../utils/qrcodeHandler';
-import { createRenderer } from '../utils/Renderer';
+import { getTypeTable, QRPointType } from '@/utils/qrcodeHandler';
 
-function listPoints(qrcode, params) {
+export default function listPoints(qrcode, params) {
     if (!qrcode) return [];
 
     const nCount = qrcode.getModuleCount();
@@ -322,35 +320,3 @@ function listPoints(qrcode, params) {
 
     return pointList;
 }
-
-const schemaDSJ = yup.object().shape({
-    // 信息点缩放
-    width2: yup.number().default(70),
-    // x 宽度
-    width1: yup.number().default(70),
-    // 定位点宽度
-    width3: yup.number().default(90),
-    // 定位点样式 ['矩形', 'DSJ'],
-    posType: yup.mixed().oneOf([0, 1]).default(1),
-});
-
-const RenderDSJ = (qrcode, options) => {
-    try {
-        options = schemaDSJ.validateSync(options);
-    } catch (err) {
-        console.log(err);
-        return err;
-    }
-
-    const params = ['width2', 'width1', 'width3', 'posType'].map(
-        (k) => options[k]
-    );
-
-    const svg = createRenderer({
-        listPoints: listPoints,
-    })({ qrcode, params });
-
-    return svg;
-};
-
-export default RenderDSJ;
