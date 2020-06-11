@@ -63,7 +63,7 @@ const qrcode = encodeData({
     correctLevel: 0,
 });
 /**
- *
+ * A1
  * @param {Object} qrcode
  * @param {Object} options
  * @param {Number} [options.type]  信息点样式 0=>矩形 1=>圆形,2=>随机
@@ -72,10 +72,11 @@ const qrcode = encodeData({
  * @param {String} [options.posType] 定位点样式 0=>矩形 1=>圆形 2=>行星
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
+ * @return {String} svg图片
  */
 const A1 = rendererRect(qrcode);
 /**
- *
+ * A2
  * @param {Object} qrcode
  * @param {Object} options
  * @param {Number} [options.type]  信息点样式 0=>矩形 1=>圆形,2=>随机
@@ -84,10 +85,11 @@ const A1 = rendererRect(qrcode);
  * @param {String} [options.posType] 定位点样式 0=>矩形 1=>圆形 2=>行星
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
+ * @return {String} svg图片
  */
 const A2 = rendererRound(qrcode);
 /**
- *
+ * A3
  * @param {Object} qrcode
  * @param {Object} options
  * @param {Number} [options.type]  信息点样式 0=>矩形 1=>圆形,2=>随机
@@ -96,25 +98,28 @@ const A2 = rendererRound(qrcode);
  * @param {String} [options.posType] 定位点样式 0=>矩形 1=>圆形 2=>行星
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
+ * @return {String} svg图片
  */
 const A3 = rendererRandRound(qrcode);
 /**
- *
+ * sp1
  * @param {Object} qrcode
  * @param {Object} options
  * @param {Number} [options.width1]  x 宽度
  * @param {Number} [options.width2]  信息点缩放
  * @param {Number} [options.width3]  定位点宽度
  * @param {String} [options.posType] 定位点样式 0=>矩形 1=>DSJ
+ * @return {String} svg图片
  */
 const sp1 = rendererDSJ(qrcode);
 /**
- *
+ * sp2
  * @param {*} qrcode
+ * @return {String} svg图片
  */
 const sp2 = rendererRandRect(qrcode);
 /**
- *
+ * B1
  * @param {Object} qrcode
  * @param {Object} options
  * @param {Number} [options.height]  柱体高度
@@ -122,10 +127,11 @@ const sp2 = rendererRandRect(qrcode);
  * @param {String} [options.upColor]  上侧颜色
  * @param {String} [options.leftColor] 左侧颜色
  * @param {String} [options.rightColor] 右侧颜色
+ * @return {String} svg图片
  */
 const B1 = renderer25D(qrcode);
 /**
- *
+ * C1
  * @param {*} qrcode
  * @param {*} options
  * @param {String} [options.backgroudImage] 背景图片
@@ -136,12 +142,13 @@ const B1 = renderer25D(qrcode);
  * @param {String} [options.otherColorLight] 信息点浅色
  * @param {Number} [options.posType]  // 定位点样式 0=>'矩形' 1=>'圆形' 2=>'行星'
  * @param {String} [options.posColor]  // 定位点颜色
+ * @return {String} svg图片
  */
 const C1 = rendererImage(qrcode, {
     backgroudImage: Rem,
 });
 /**
- *
+ * C2
  * @param {*} qrcode
  * @param {*} options
  * @param {String} [options.backgroudImage] 背景图片
@@ -152,9 +159,10 @@ const C1 = rendererImage(qrcode, {
  * @param {String} [options.otherColorLight] 信息点浅色
  * @param {Number} [options.posType]  // 定位点样式 0=>'矩形' 1=>'圆形' 2=>'行星'
  * @param {String} [options.posColor]  // 定位点颜色
+ * @return {Promise<String>}  svg图片
  */
 rendererResImage(qrcode, { backgroudImage: defaultResImage }).then((res) => {
-    document.querySelector('.c2').innerHTML = res;
+    const C2=res;
 });
 ```
 
