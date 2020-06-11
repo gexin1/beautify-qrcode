@@ -9,12 +9,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const base = require('./webpack.base');
 const { resolve } = require('./webpack.help');
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = merge(base, {
     entry: resolve('../src/example/index.js'),
     mode: 'development',
     devtool: 'source-map',
+    devServer: { open: true },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             template: resolve('../public/index.html'),
             inject: true,

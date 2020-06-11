@@ -20,7 +20,7 @@ export var QRPointType = {
  * @param {Number} [options.width]
  * @param {Number} [options.height]
  * @param {Number} [options.typeNumber]
- * @param {Number} [options.correctLevel]
+ * @param {Number} [options.correctLevel] 容错率 1=>7% 0 =>15% 3=>25% 2=>30%
  * @param {String} [options.background]
  * @param {String} [options.foreground]
  */

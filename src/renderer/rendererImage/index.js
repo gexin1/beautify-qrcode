@@ -13,7 +13,7 @@ const schemaImage = yup.object().shape({
     // 信息点深色
     otherColorDark: yup.string().default('#000000'),
     // 信息点浅色
-    otherColorLight: yup.string().default('#000000'),
+    otherColorLight: yup.string().default('#FFFFFF'),
     // 定位点样式 ['矩形', '圆形', '行星']
     posType: yup.mixed().oneOf([0, 1, 2]).default(0),
     // 定位点颜色

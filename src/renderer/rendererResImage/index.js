@@ -62,6 +62,7 @@ function getGrayPointList(params, size, black, white) {
 
 const RendererResImage = ({ qrcode, params }) => {
     const otherColor = params[5];
+
     return new Promise((resolve, reject) => {
         getGrayPointList(
             params,
@@ -97,7 +98,7 @@ const RendererResImage = ({ qrcode, params }) => {
                 <rect id="B" width="${3.08}" height="${3.08}" />
                 <rect id="S" width="${1.02}" height="${1.02}" />
             </defs>
-            ${gpl.concat(listPoints(qrcode, params))}
+            ${gpl.concat(listPoints(qrcode, params)).join('')}
         </svg>`;
                 resolve(svg);
             })

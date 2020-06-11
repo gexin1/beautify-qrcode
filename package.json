@@ -1,8 +1,8 @@
 {
-  "name": "webpack-multi-page",
+  "name": "beautify-qrcode",
   "version": "1.0.0",
   "description": "webpack多页面脚手架",
-  "main": "dist/print.js",
+  "main": "./dist/beautifyQrcode.js",
   "directories": {
     "doc": "doc"
   },
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gexin1/webpack-multi-page"
+    "url": "https://github.com/gexin1/beautify-qrcode"
   },
   "author": "river",
   "license": "ISC",
