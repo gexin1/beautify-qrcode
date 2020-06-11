@@ -2,7 +2,7 @@
   "name": "webpack-multi-page",
   "version": "1.0.0",
   "description": "webpack多页面脚手架",
-  "main": "index.js",
+  "main": "dist/print.js",
   "directories": {
     "doc": "doc"
   },
