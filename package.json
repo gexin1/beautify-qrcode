@@ -76,7 +76,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,scss,html}": [
+    "*.{js,css,html}": [
       "eslint --fix --cache --format=pretty",
       "prettier --ignore-path .eslintignore --single-quote --write",
       "git add"
