@@ -1,6 +1,5 @@
 import * as yup from 'yup';
 import { gamma } from '@/utils/imageUtils';
-import { defaultResImage } from '@/constant/References';
 import listPoints from './listPoints';
 function getViewBox(qrcode) {
     if (!qrcode) return '0 0 0 0';
@@ -110,7 +109,7 @@ const RendererResImage = ({ qrcode, params }) => {
 
 const schemaResImage = yup.object().shape({
     // 背景图片
-    backgroudImage: yup.string().default(defaultResImage),
+    backgroudImage: yup.string().default(),
     // 对比度
     contrast: yup.number().default(0),
     // 曝光

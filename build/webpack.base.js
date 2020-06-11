@@ -2,16 +2,15 @@
  * @Author: river
  * @Date: 2020-04-09 11:33:23
  * @Last Modified by: river
- * @Last Modified time: 2020-04-09 14:11:19
+ * @Last Modified time: 2020-06-11 18:38:15
  */
 const { resolve } = require('./webpack.help');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const config = require('./config');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
-    entry: resolve('../src/main.js'),
+    entry: resolve('../src/example/index.js'),
     output: {
         path: resolve('../dist'),
         publicPath: '/',
@@ -62,8 +61,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                // 防止不解析第三方包
-                // exclude: /node_modules/,
+                exclude: /node_modules/,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -87,21 +85,5 @@ module.exports = {
             },
         ],
     },
-    plugins: [
-        new webpack.ProgressPlugin(),
-        new MiniCssExtractPlugin({
-            filename:
-                'css/' + (devMode ? '[name].css' : '[name].[contenthash].css'),
-            chunkFilename:
-                'css/' + (devMode ? '[name].css' : '[name].[contenthash].css'),
-        }),
-        new HtmlWebpackPlugin({
-            template: resolve('../public/index.html'),
-            inject: true,
-            hash: true,
-            chunks: ['vendors', 'main'],
-            favicon: resolve('../public/favicon.ico'),
-            minify: true,
-        }),
-    ],
+    plugins: [new webpack.ProgressPlugin()],
 };

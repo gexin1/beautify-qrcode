@@ -1,10 +1,9 @@
 import * as yup from 'yup';
 import { createRenderer } from '@/utils/renderer';
-import { defaultImage } from '@/constant/References';
 import listPoints from './listPoints';
 const schemaImage = yup.object().shape({
     // 背景图片
-    backgroudImage: yup.string().default(defaultImage),
+    backgroudImage: yup.string(),
     // 信息点样式 ['矩形', '圆形'],
     type: yup.mixed().oneOf([0, 1, 2]).default(0),
     // 信息点缩放

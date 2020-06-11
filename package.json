@@ -68,6 +68,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "terser-webpack-plugin": "^3.0.3",
     "yup": "^0.29.1"
   },
   "husky": {

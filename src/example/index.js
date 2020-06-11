@@ -2,17 +2,17 @@ import {
     RendererRect,
     RendererRound,
     RendererRandRound,
-} from './renderer/rendererBase';
-import RendererDSJ from './renderer/rendererDSJ';
-import RendererRandRect from './renderer/rendererRandRect';
-import Renderer25D from './renderer/renderer25D';
-import RendererImage from './renderer/rendererImage';
-import RendererResImage from './renderer/rendererResImage';
-import { encodeData } from './utils/qrcodeHandler';
+} from '@/renderer/rendererBase';
+import RendererDSJ from '@/renderer/rendererDSJ';
+import RendererRandRect from '@/renderer/rendererRandRect';
+import Renderer25D from '@/renderer/renderer25D';
+import RendererImage from '@/renderer/rendererImage';
+import RendererResImage from '@/renderer/rendererResImage';
+import { encodeData } from '@/utils/qrcodeHandler';
 
-import './style/base.css';
+import '@/style/base.css';
 
-import Rem from './images/Rem.jpg';
+import Rem from '@/images/Rem.jpg';
 const qrcode = encodeData({
     text: 'QRBTF_URL',
     correctLevel: 0,
