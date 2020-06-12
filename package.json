@@ -82,12 +82,7 @@
         }
     },
     "lint-staged": {
-        "*.{js}": [
-            "npm run fix:script"
-        ],
-        "*.{css}": [
-            "npm run fix:style"
-        ],
-        "*.{html}": []
+        "*.js": "npm run fix:script",
+        "*.css": "npm run fix:style"
     }
 }
