@@ -1,0 +1,20 @@
+on: [push]
+
+name: push
+
+jobs:
+    build:
+        name: code lint
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [12.x]
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+            - name: code lint
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm i
+            - run: npm run lint
