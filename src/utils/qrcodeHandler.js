@@ -1,5 +1,4 @@
-/* eslint-disable eqeqeq */
-import { qrcode as QRCodeEncoder } from './qrcodeEncoder';
+import { QRCode as QRCodeEncoder } from './qrcodeEncoder';
 
 export var QRPointType = {
     DATA: 0,
@@ -67,7 +66,7 @@ export function getTypeTable(qrcode) {
         typeTable[position[i][0]][position[i][1]] = QRPointType.ALIGN_CENTER;
         for (let r = -2; r <= 2; r++) {
             for (let c = -2; c <= 2; c++) {
-                if (!(r == 0 && c == 0))
+                if (!(r === 0 && c === 0))
                     typeTable[position[i][0] + r][position[i][1] + c] =
                         QRPointType.ALIGN_OTHER;
             }
@@ -84,7 +83,7 @@ export function getTypeTable(qrcode) {
                     PD[i][1] + c >= 0 &&
                     PD[i][1] + c < nCount
                 )
-                    if (!(r == 0 && c == 0))
+                    if (!(r === 0 && c === 0))
                         typeTable[PD[i][0] + r][PD[i][1] + c] =
                             QRPointType.POS_OTHER;
             }
@@ -92,7 +91,7 @@ export function getTypeTable(qrcode) {
     }
 
     for (let i = 0; i <= 8; i++) {
-        if (i != 6) typeTable[i][8] = typeTable[8][i] = QRPointType.FORMAT;
+        if (i !== 6) typeTable[i][8] = typeTable[8][i] = QRPointType.FORMAT;
         if (i < 7) typeTable[nCount - i - 1][8] = QRPointType.FORMAT;
         if (i < 8) typeTable[8][nCount - i - 1] = QRPointType.FORMAT;
     }
