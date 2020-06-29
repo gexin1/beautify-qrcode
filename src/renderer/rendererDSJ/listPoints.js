@@ -140,7 +140,7 @@ export default function listPoints(qrcode, params) {
                                 y2="${y + 3 - width1 / Math.sqrt(8)}"
                                 fill="none"
                                 stroke="#0B2D97"
-                                strokeWidth="${width1}"
+                                stroke-width="${width1}"
                             />`
                         );
                         g1.push(
@@ -152,7 +152,7 @@ export default function listPoints(qrcode, params) {
                                 y2="${y + 3 - width1 / Math.sqrt(8)}"
                                 fill="none"
                                 stroke="#0B2D97"
-                                strokeWidth="${width1}"
+                                stroke-width="${width1}"
                             />`
                         );
                         available[x][y] = false;
@@ -196,7 +196,7 @@ export default function listPoints(qrcode, params) {
                                 y2="${y + 2 - width1 / Math.sqrt(8)}"
                                 fill="none"
                                 stroke="#0B2D97"
-                                strokeWidth="${width1}"
+                                stroke-width="${width1}"
                             />`
                         );
                         g1.push(
@@ -208,7 +208,7 @@ export default function listPoints(qrcode, params) {
                                 y2="${y + 2 - width1 / Math.sqrt(8)}"
                                 fill="none"
                                 stroke="#0B2D97"
-                                strokeWidth="${width1}"
+                                stroke-width="${width1}"
                             />`
                         );
                         for (let i = 0; i < 2; i++) {

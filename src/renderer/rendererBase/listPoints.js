@@ -89,7 +89,7 @@ export default function listPoints(qrcode, params) {
                         `<circle
                             key="${id++}"
                             fill="none"
-                            strokeWidth="1"
+                            stroke-width="1"
                             stroke="${posColor}"
                             cx="${x + 0.5}"
                             cy="${y + 0.5}"
@@ -110,8 +110,8 @@ export default function listPoints(qrcode, params) {
                         `<circle
                             key="${id++}"
                             fill="none"
-                            strokeWidth="0.15"
-                            strokeDasharray="0.5,0.5"
+                            stroke-width="0.15"
+                            stroke-dasharray="0.5,0.5"
                             stroke="${posColor}"
                             cx="${x + 0.5}"
                             cy="${y + 0.5}"
