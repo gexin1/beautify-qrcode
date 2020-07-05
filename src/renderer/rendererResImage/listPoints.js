@@ -6,11 +6,8 @@ export default function listPoints(qrcode, params) {
     const nCount = qrcode.getModuleCount();
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
-    // const contrast = params[1];
-    // const exposure = params[2];
     const alignType = params[3];
     const timingType = params[4];
-    // const otherColor = params[5];
     const posColor = params[6];
 
     let id = 0;
@@ -26,19 +23,19 @@ export default function listPoints(qrcode, params) {
                     if (alignType === 2) {
                         pointList.push(
                             `<use
-                                key="${id++}"
+                                key=${id++}
                                 xlink:href="#B-black"
-                                x="${posX - 0.03}"
-                                y="${posY - 0.03}"
+                                x=${posX - 0.03}
+                                y=${posY - 0.03}
                             />`
                         );
                     } else {
                         pointList.push(
                             `<use
-                                key="${id++}"
+                                key=${id++}
                                 xlink:href="#S-black"
-                                x="${posX + 1 - 0.01}"
-                                y="${posY + 1 - 0.01}"
+                                x=${posX + 1 - 0.01}
+                                y=${posY + 1 - 0.01}
                             />`
                         );
                     }
@@ -46,19 +43,19 @@ export default function listPoints(qrcode, params) {
                     if (alignType === 0) {
                         pointList.push(
                             `<use
-                                key="${id++}"
+                                key=${id++}
                                 xlink:href="#S-white"
-                                x="${posX + 1}"
-                                y="${posY + 1}"
+                                x=${posX + 1}
+                                y=${posY + 1}
                             />`
                         );
                     } else {
                         pointList.push(
                             `<use
-                                key="${id++}"
+                                key=${id++}
                                 xlink:href="#B-white"
-                                x="${posX - 0.03}"
-                                y="${posY - 0.03}"
+                                x=${posX - 0.03}
+                                y=${posY - 0.03}
                             />`
                         );
                     }
@@ -68,19 +65,19 @@ export default function listPoints(qrcode, params) {
                     if (timingType === 2) {
                         pointList.push(
                             `<use
-                                key="${id++}"
+                                key=${id++}
                                 xlink:href="#B-black"
-                                x="${posX - 0.03}"
-                                y="${posY - 0.03}"
+                                x=${posX - 0.03}
+                                y=${posY - 0.03}
                             />`
                         );
                     } else {
                         pointList.push(
                             `<use
-                                key="${id++}"
+                                key=${id++}
                                 xlink:href="#S-black"
-                                x="${posX + 1}"
-                                y="${posY + 1}"
+                                x=${posX + 1}
+                                y=${posY + 1}
                             />`
                         );
                     }
@@ -88,19 +85,19 @@ export default function listPoints(qrcode, params) {
                     if (timingType === 0) {
                         pointList.push(
                             `<use
-                                key="${id++}"
+                                key=${id++}
                                 xlink:href="#S-white"
-                                x="${posX + 1}"
-                                y="${posY + 1}"
+                                x=${posX + 1}
+                                y=${posY + 1}
                             />`
                         );
                     } else {
                         pointList.push(
                             `<use
-                                key="${id++}"
+                                key=${id++}
                                 xlink:href="#B-white"
-                                x="${posX - 0.03}"
-                                y="${posY - 0.03}"
+                                x=${posX - 0.03}
+                                y=${posY - 0.03}
                             />`
                         );
                     }
@@ -109,11 +106,11 @@ export default function listPoints(qrcode, params) {
                 if (qrcode.isDark(x, y)) {
                     pointList.push(
                         `<use
-                            key="${id++}"
-                            fill="${posColor}"
+                            key=${id++}
+                            fill=${posColor}
                             xlink:href="#B"
-                            x="${posX - 0.03}"
-                            y="${posY - 0.03}"
+                            x=${posX - 0.03}
+                            y=${posY - 0.03}
                         />`
                     );
                 }
@@ -121,20 +118,20 @@ export default function listPoints(qrcode, params) {
                 if (qrcode.isDark(x, y)) {
                     pointList.push(
                         `<use
-                            key="${id++}"
-                            fill="${posColor}"
+                            key=${id++}
+                            fill=${posColor}
                             xlink:href="#B"
-                            x="${posX - 0.03}"
-                            y="${posY - 0.03}"
+                            x=${posX - 0.03}
+                            y=${posY - 0.03}
                         />`
                     );
                 } else {
                     pointList.push(
                         `<use
-                            key="${id++}"
+                            key=${id++}
                             xlink:href="#B-white"
-                            x="${posX - 0.03}"
-                            y="${posY - 0.03}"
+                            x=${posX - 0.03}
+                            y=${posY - 0.03}
                         />`
                     );
                 }
@@ -142,10 +139,10 @@ export default function listPoints(qrcode, params) {
                 if (qrcode.isDark(x, y)) {
                     pointList.push(
                         `<use
-                            key="${id++}"
+                            key=${id++}
                             xlink:href="#S-black"
-                            x="${posX + 1}"
-                            y="${posY + 1}"
+                            x=${posX + 1}
+                            y=${posY + 1}
                         />`
                     );
                 }

@@ -28,7 +28,7 @@ const schemaBase = yup.object().shape({
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
  */
-const RendererBase = (qrcode, options) => {
+const rendererBase = (qrcode, options) => {
     try {
         options = schemaBase.validateSync(options);
     } catch (err) {
@@ -62,7 +62,7 @@ const RendererBase = (qrcode, options) => {
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
  */
-export const RendererRect = (qrcode, options = {}) => {
+export const rendererRect = (qrcode, options = {}) => {
     options = {
         ...{
             type: 0,
@@ -72,7 +72,7 @@ export const RendererRect = (qrcode, options = {}) => {
         },
         ...options,
     };
-    return RendererBase(qrcode, options);
+    return rendererBase(qrcode, options);
 };
 /**
  *
@@ -85,7 +85,7 @@ export const RendererRect = (qrcode, options = {}) => {
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
  */
-export const RendererRound = (qrcode, options = {}) => {
+export const rendererRound = (qrcode, options = {}) => {
     options = {
         ...{
             type: 1,
@@ -95,7 +95,7 @@ export const RendererRound = (qrcode, options = {}) => {
         },
         ...options,
     };
-    return RendererBase(qrcode, options);
+    return rendererBase(qrcode, options);
 };
 /**
  *
@@ -108,7 +108,7 @@ export const RendererRound = (qrcode, options = {}) => {
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
  */
-export const RendererRandRound = (qrcode, options = {}) => {
+export const rendererRandRound = (qrcode, options = {}) => {
     options = {
         ...{
             type: 2,
@@ -118,5 +118,5 @@ export const RendererRandRound = (qrcode, options = {}) => {
         },
         ...options,
     };
-    return RendererBase(qrcode, options);
+    return rendererBase(qrcode, options);
 };
