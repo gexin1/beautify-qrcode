@@ -35,7 +35,7 @@ export function createRenderer(renderer) {
             <svg className="Qr-item-svg" width="100%" height="100%" viewBox="${renderer.getViewBox(
                 qrcode
             )}" fill="white"
-                 xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 ${renderer.listPoints(qrcode, params).join('')}
             </svg>
         `;

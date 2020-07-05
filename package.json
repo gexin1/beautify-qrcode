@@ -11,7 +11,7 @@
         "build": "cross-env NODE_ENV=production webpack --mode=production --config=build/webpack.prod.js",
         "fix": "eslint --fix --cache --format=pretty build src",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "lint":"npm run lint:script && npm run lint:style",
+        "lint": "npm run lint:script && npm run lint:style",
         "lint:script": "eslint . --ext .js",
         "lint:style": "stylelint **/*.{css,scss,sass}",
         "fix:style": "npm run lint:style --fix",
