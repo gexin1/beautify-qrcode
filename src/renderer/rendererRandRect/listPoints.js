@@ -42,23 +42,23 @@ export default function listPoints(qrcode, params) {
             const width = 0.15;
             pointList.push(
                 `<rect
-                    key=${id++}
+                    key="${id++}"
                     opacity="0.9"
-                    fill=${tempRGB[1]}
-                    width=${1 * tempRand + width}
-                    height=${1 * tempRand + width}
-                    x=${row - (tempRand - 1) / 2}
-                    y=${col - (tempRand - 1) / 2}
+                    fill="${tempRGB[1]}"
+                    width="${1 * tempRand + width}"
+                    height="${1 * tempRand + width}"
+                    x="${row - (tempRand - 1) / 2}"
+                    y="${col - (tempRand - 1) / 2}"
                 />`
             );
             pointList.push(
                 `<rect
-                    key=${id++}
-                    fill=${tempRGB[0]}
-                    width=${1 * tempRand}
-                    height=${1 * tempRand}
-                    x=${row - (tempRand - 1) / 2}
-                    y=${col - (tempRand - 1) / 2}
+                    key="${id++}"
+                    fill="${tempRGB[0]}"
+                    width="${1 * tempRand}"
+                    height="${1 * tempRand}"
+                    x="${row - (tempRand - 1) / 2}"
+                    y="${col - (tempRand - 1) / 2}"
                 />`
             );
         }

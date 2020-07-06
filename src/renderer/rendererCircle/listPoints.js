@@ -40,22 +40,22 @@ export default function listPoints(qrcode, params) {
             ) {
                 pointList.push(
                     `<circle
-                        key=${id++}
-                        fill=${posColor}
-                        cx=${x + 0.5}
-                        cy=${y + 0.5}
-                        r=${1.5}
+                        key="${id++}"
+                        fill="${posColor}"
+                        cx="${x + 0.5}"
+                        cy="${y + 0.5}"
+                        r="${1.5}"
                     />`
                 );
                 pointList.push(
                     `<circle
-                        key=${id++}
+                        key="${id++}"
                         fill="none"
                         stroke-width="1"
-                        stroke=${posColor}
-                        cx=${x + 0.5}
-                        cy=${y + 0.5}
-                        r=${3}
+                        stroke="${posColor}"
+                        cx="${x + 0.5}"
+                        cy="${y + 0.5}"
+                        r="${3}"
                     />`
                 );
             } else if (
@@ -86,23 +86,23 @@ export default function listPoints(qrcode, params) {
                     ) {
                         g1.push(
                             `<circle
-                                key=${id++}
-                                cx=${x + 1 + 0.5}
-                                cy=${y + 1 + 0.5}
-                                r=${1}
+                                key="${id++}"
+                                cx="${x + 1 + 0.5}"
+                                cy="${y + 1 + 0.5}"
+                                r="${1}"
                                 fill="#FFFFFF"
-                                stroke=${otherColor}
-                                stroke-width=${rand(0.33, 0.6)}
+                                stroke="${otherColor}"
+                                stroke-width="${rand(0.33, 0.6)}"
                             />`
                         );
                         if (qrcode.isDark(x + 1, y + 1)) {
                             g1.push(
                                 `<circle
-                                    r=${0.5 * rand(0.5, 1)}
-                                    key=${id++}
-                                    fill=${otherColor}
-                                    cx=${x + 1 + 0.5}
-                                    cy=${y + 1 + 0.5}
+                                    r="${0.5 * rand(0.5, 1)}"
+                                    key="${id++}"
+                                    fill="${otherColor}"
+                                    cx="${x + 1 + 0.5}"
+                                    cy="${y + 1 + 0.5}"
                                 />`
                             );
                         }
@@ -126,13 +126,13 @@ export default function listPoints(qrcode, params) {
                     ) {
                         g1.push(
                             `<circle
-                                key=${id++}
-                                cx=${x + 1}
-                                cy=${y + 1}
-                                r=${Math.sqrt(1 / 2)}
+                                key="${id++}"
+                                cx="${x + 1}"
+                                cy="${y + 1}"
+                                r="${Math.sqrt(1 / 2)}"
                                 fill="#FFFFFF"
-                                stroke=${otherColor}
-                                stroke-width=${rand(0.33, 0.6)}
+                                stroke="${otherColor}"
+                                stroke-width="${rand(0.33, 0.6)}"
                             />`
                         );
                         for (let i = 0; i < 2; i++) {
@@ -147,13 +147,13 @@ export default function listPoints(qrcode, params) {
                     if (qrcode.isDark(x, y) && qrcode.isDark(x, y + 1)) {
                         pointList.push(
                             `<circle
-                                key=${id++}
-                                cx=${x + 0.5}
-                                cy=${y + 1}
-                                r=${0.5 * rand(0.95, 1.05)}
+                                key="${id++}"
+                                cx="${x + 0.5}"
+                                cy="${y + 1}"
+                                r="${0.5 * rand(0.95, 1.05)}"
                                 fill="#FFFFFF"
-                                stroke=${otherColor}
-                                stroke-width=${rand(0.36, 0.4)}
+                                stroke="${otherColor}"
+                                stroke-width="${rand(0.36, 0.4)}"
                             />`
                         );
                         available[x][y] = false;
@@ -164,13 +164,13 @@ export default function listPoints(qrcode, params) {
                     if (qrcode.isDark(x, y) && qrcode.isDark(x + 1, y)) {
                         pointList.push(
                             `<circle
-                                key=${id++}
-                                cx=${x + 1}
-                                cy=${y + 0.5}
-                                r=${0.5 * rand(0.95, 1.05)}
+                                key="${id++}"
+                                cx="${x + 1}"
+                                cy="${y + 0.5}"
+                                r="${0.5 * rand(0.95, 1.05)}"
                                 fill="#FFFFFF"
-                                stroke=${otherColor}
-                                stroke-width=${rand(0.36, 0.4)}
+                                stroke="${otherColor}"
+                                stroke-width="${rand(0.36, 0.4)}"
                             />`
                         );
                         available[x][y] = false;
@@ -181,24 +181,24 @@ export default function listPoints(qrcode, params) {
                     if (qrcode.isDark(x, y)) {
                         pointList.push(
                             `<circle
-                                r=${0.5 * rand(0.5, 1)}
-                                key=${id++}
-                                fill=${otherColor}
-                                cx=${x + 0.5}
-                                cy=${y + 0.5}
+                                r="${0.5 * rand(0.5, 1)}"
+                                key="${id++}"
+                                fill="${otherColor}"
+                                cx="${x + 0.5}"
+                                cy="${y + 0.5}"
                             />`
                         );
                     } else if (typeTable[x][y] === QRPointType.DATA) {
                         if (rand(0, 1) > 0.85) {
                             g2.push(
                                 `<circle
-                                    r=${0.5 * rand(0.85, 1.3)}
-                                    key=${id++}
+                                    r="${0.5 * rand(0.85, 1.3)}"
+                                    key="${id++}"
                                     fill="#FFFFFF"
-                                    stroke=${otherColor}
-                                    stroke-width=${rand(0.15, 0.33)}
-                                    cx=${x + 0.5}
-                                    cy=${y + 0.5}
+                                    stroke="${otherColor}"
+                                    stroke-width="${rand(0.15, 0.33)}"
+                                    cx="${x + 0.5}"
+                                    cy="${y + 0.5}"
                                 />`
                             );
                         }

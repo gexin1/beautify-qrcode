@@ -36,130 +36,130 @@ export default function listPoints(qrcode, params) {
                 if (type === 0)
                     pointList.push(
                     `<rect
-                            opacity=${opacity}
-                            width=${size}
-                            height=${size}
-                            key=${id++}
-                            fill=${otherColor}
-                            x=${x + (1 - size) / 2}
-                            y=${y + (1 - size) / 2}
+                            opacity="${opacity}"
+                            width="${size}"
+                            height="${size}"
+                            key="${id++}"
+                            fill="${otherColor}"
+                            x="${x + (1 - size) / 2}"
+                            y="${y + (1 - size) / 2}"
                         />`
                     );
                 else if (type === 1)
                     pointList.push(
                     `<circle
-                            opacity=${opacity}
-                            r=${size / 2}
-                            key=${id++}
-                            fill=${otherColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
+                            opacity="${opacity}"
+                            r="${size / 2}"
+                            key="${id++}"
+                            fill="${otherColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
                         />`
                     );
                 else if (type === 2)
                     pointList.push(
                     `<circle
-                            key=${id++}
-                            opacity=${opacity}
-                            fill=${otherColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${size / 2}
+                            key="${id++}"
+                            opacity="${opacity}"
+                            fill="${otherColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${size / 2}"
                         />`
                     );
             } else if (typeTable[x][y] === QRPointType.POS_CENTER) {
                 if (posType === 0) {
                     pointList.push(
                     `<rect
-                            width=${1}
-                            height=${1}
-                            key=${id++}
-                            fill=${posColor}
-                            x=${x}
-                            y=${y}
+                            width="${1}"
+                            height="${1}"
+                            key="${id++}"
+                            fill="${posColor}"
+                            x="${x}"
+                            y="${y}"
                         />`
                     );
                 } else if (posType === 1) {
                     pointList.push(
                     `<circle
-                            key=${id++}
-                            fill=${posColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${1.5}
+                            key="${id++}"
+                            fill="${posColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${1.5}"
                         />`
                     );
                     pointList.push(
                     `<circle
-                            key=${id++}
+                            key="${id++}"
                             fill="none"
                             stroke-width="1"
-                            stroke=${posColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${3}
+                            stroke="${posColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${3}"
                         />`
                     );
                 } else if (posType === 2) {
                     pointList.push(
                     `<circle
-                            key=${id++}
-                            fill=${posColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${1.5}
+                            key="${id++}"
+                            fill="${posColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${1.5}"
                         />`
                     );
                     pointList.push(
                     `<circle
-                            key=${id++}
+                            key="${id++}"
                             fill="none"
                             stroke-width="0.15"
                             stroke-dasharray="0.5,0.5"
-                            stroke=${posColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${3}
+                            stroke="${posColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${3}"
                         />`
                     );
                     for (let w = 0; w < vw.length; w++) {
                         pointList.push(
                             `<circle
-                                key=${id++}
-                                fill=${posColor}
-                                cx=${x + vw[w] + 0.5}
-                                cy=${y + 0.5}
-                                r=${0.5}
+                                key="${id++}"
+                                fill="${posColor}"
+                                cx="${x + vw[w] + 0.5}"
+                                cy="${y + 0.5}"
+                                r="${0.5}"
                             />`
                         );
                     }
                     for (let h = 0; h < vh.length; h++) {
                         pointList.push(
                            `<circle
-                                key=${id++}
-                                fill=${posColor}
-                                cx=${x + 0.5}
-                                cy=${y + vh[h] + 0.5}
-                                r=${0.5}
+                                key="${id++}"
+                                fill="${posColor}"
+                                cx="${x + 0.5}"
+                                cy="${y + vh[h] + 0.5}"
+                                r="${0.5}"
                             />`
                         );
                     }
                 } else if (posType === 3) {
                     pointList.push(
                         `<circle
-                            key=${id++}
-                            fill=${posColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${1.5}
+                            key="${id++}"
+                            fill="${posColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${1.5}"
                         />`
                     );
                     pointList.push(
                     `<path
-                            key=${id++}
+                            key="${id++}"
                             d="${sq25}"
                             stroke="${posColor}"
-                            stroke-width=${(100 / 6) * (1 - (1 - size) * 0.75)}
+                            stroke-width="${(100 / 6) * (1 - (1 - size) * 0.75)}"
                             fill="none"
                             transform="${
                                 'translate(' +
@@ -182,10 +182,10 @@ export default function listPoints(qrcode, params) {
                         `<rect
                             width=${1}
                             height=${1}
-                            key=${id++}
+                            key="${id++}"
                             fill=${posColor}
-                            x=${x}
-                            y=${y}
+                            x="${x}"
+                            y="${y}"
                         />`
                     );
                 }
@@ -193,35 +193,35 @@ export default function listPoints(qrcode, params) {
                 if (type === 0)
                     pointList.push(
                         `<rect
-                            opacity=${opacity}
+                            opacity="${opacity}"
                             width=${size}
                             height=${size}
-                            key=${id++}
-                            fill=${otherColor}
-                            x=${x + (1 - size) / 2}
-                            y=${y + (1 - size) / 2}
+                            key="${id++}"
+                            fill="${otherColor}"
+                            x="${x + (1 - size) / 2}"
+                            y="${y + (1 - size) / 2}"
                         />`
                     );
                 else if (type === 1)
                     pointList.push(
                         `<circle
-                            opacity=${opacity}
-                            r=${size / 2}
-                            key=${id++}
-                            fill=${otherColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
+                            opacity="${opacity}"
+                            r="${size / 2}"
+                            key="${id++}"
+                            fill="${otherColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
                         />`
                     );
                 else if (type === 2)
                     pointList.push(
                         `<circle
-                            opacity=${opacity}
-                            key=${id++}
-                            fill=${otherColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${0.5 * rand(0.33, 1.0)}
+                            opacity="${opacity}"
+                            key="${id++}"
+                            fill="${otherColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${0.5 * rand(0.33, 1.0)}"
                         />`
                     );
             }

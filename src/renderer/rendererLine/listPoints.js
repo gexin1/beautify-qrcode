@@ -45,93 +45,93 @@ export default function listPoints(qrcode, params) {
                         `<rect
                             width=${1}
                             height=${1}
-                            key=${id++}
-                            fill=${posColor}
-                            x=${x}
-                            y=${y}
+                            key="${id++}"
+                            fill="${posColor}"
+                            x="${x}"
+                            y="${y}"
                         />`
                     );
                 } else if (posType === 1) {
                     pointList.push(
                         `<circle
-                            key=${id++}
-                            fill=${posColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${1.5}
+                            key="${id++}"
+                            fill="${posColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${1.5}"
                         />`
                     );
                     pointList.push(
                         `<circle
-                            key=${id++}
+                            key="${id++}"
                             fill="none"
                             stroke-width="1"
-                            stroke=${posColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${3}
+                            stroke="${posColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${3}"
                         />`
                     );
                 } else if (posType === 2) {
                     pointList.push(
                         `<circle
-                            key=${id++}
-                            fill=${posColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${1.5}
+                            key="${id++}"
+                            fill="${posColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${1.5}"
                         />`
                     );
                     pointList.push(
                         `<circle
-                            key=${id++}
+                            key="${id++}"
                             fill="none"
                             stroke-width="0.15"
                             strokeDasharray="0.5,0.5"
-                            stroke=${posColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${3}
+                            stroke="${posColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${3}"
                         />`
                     );
                     for (let w = 0; w < vw.length; w++) {
                         pointList.push(
                             `<circle
-                                key=${id++}
-                                fill=${posColor}
-                                cx=${x + vw[w] + 0.5}
-                                cy=${y + 0.5}
-                                r=${0.5}
+                                key="${id++}"
+                                fill="${posColor}"
+                                cx="${x + vw[w] + 0.5}"
+                                cy="${y + 0.5}"
+                                r="${0.5}"
                             />`
                         );
                     }
                     for (let h = 0; h < vh.length; h++) {
                         pointList.push(
                             `<circle
-                                key=${id++}
-                                fill=${posColor}
-                                cx=${x + 0.5}
-                                cy=${y + vh[h] + 0.5}
-                                r=${0.5}
+                                key="${id++}"
+                                fill="${posColor}"
+                                cx="${x + 0.5}"
+                                cy="${y + vh[h] + 0.5}"
+                                r="${0.5}"
                             />`
                         );
                     }
                 } else if (posType === 3) {
                     pointList.push(
                         `<circle
-                            key=${id++}
-                            fill=${posColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
-                            r=${1.5}
+                            key="${id++}"
+                            fill="${posColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
+                            r="${1.5}"
                         />`
                     );
                     pointList.push(
                         `<path
-                            key=${id++}
+                            key="${id++}"
                             d="${sq25}"
-                            stroke=${posColor}
-                            stroke-width=${(100 / 6) * (1 - (1 - size) * 0.75)}
+                            stroke="${posColor}"
+                            stroke-width="${(100 / 6) * (1 - (1 - size) * 0.75)}"
                             fill="none"
                             transform="${`translate(${String(x - 2.5)},${String(
                                 y - 2.5
@@ -143,12 +143,12 @@ export default function listPoints(qrcode, params) {
                 if (posType === 0) {
                     pointList.push(
                         `<rect
-                            width=${1}
-                            height=${1}
-                            key=${id++}
-                            fill=${posColor}
-                            x=${x}
-                            y=${y}
+                            width="${1}"
+                            height="${1}"
+                            key="${id++}"
+                            fill="${posColor}"
+                            x="${x}"
+                            y="${y}"
                         />`
                     );
                 }
@@ -175,15 +175,15 @@ export default function listPoints(qrcode, params) {
                             }
                             pointList.push(
                                 `<line
-                                    opacity=${opacity}
-                                    x1=${x + 0.5}
-                                    y1=${y + 0.5}
+                                    opacity="${opacity}"
+                                    x1="${x + 0.5}"
+                                    y1="${y + 0.5}"
                                     x2=${x + end - start - 0.5}
-                                    y2=${y + 0.5}
+                                    y2="${y + 0.5}"
                                     stroke-width=${size}
-                                    stroke=${otherColor}
+                                    stroke="${otherColor}"
                                     stroke-linecap="round"
-                                    key=${id++}
+                                    key="${id++}"
                                 />`
                             );
                         }
@@ -191,12 +191,12 @@ export default function listPoints(qrcode, params) {
                     if (available[x][y]) {
                         pointList.push(
                             `<circle
-                                opacity=${opacity}
-                                r=${size / 2}
-                                key=${id++}
-                                fill=${otherColor}
-                                cx=${x + 0.5}
-                                cy=${y + 0.5}
+                                opacity="${opacity}"
+                                r="${size / 2}"
+                                key="${id++}"
+                                fill="${otherColor}"
+                                cx="${x + 0.5}"
+                                cy="${y + 0.5}"
                             />`
                         );
                     }
@@ -224,15 +224,15 @@ export default function listPoints(qrcode, params) {
                             }
                             pointList.push(
                                 `<line
-                                    opacity=${opacity}
-                                    x1=${x + 0.5}
-                                    y1=${y + 0.5}
-                                    x2=${x + 0.5}
-                                    y2=${y + end - start - 1 + 0.5}
-                                    stroke-width=${size}
-                                    stroke=${otherColor}
+                                    opacity="${opacity}"
+                                    x1="${x + 0.5}"
+                                    y1="${y + 0.5}"
+                                    x2="${x + 0.5}"
+                                    y2="${y + end - start - 1 + 0.5}"
+                                    stroke-width="${size}"
+                                    stroke="${otherColor}"
                                     stroke-linecap="round"
-                                    key=${id++}
+                                    key="${id++}"
                                 />`
                             );
                         }
@@ -240,12 +240,12 @@ export default function listPoints(qrcode, params) {
                     if (available[x][y]) {
                         pointList.push(
                             `<circle
-                                opacity=${opacity}
-                                r=${size / 2}
-                                key=${id++}
-                                fill=${otherColor}
-                                cx=${x + 0.5}
-                                cy=${y + 0.5}
+                                opacity="${opacity}"
+                                r="${size / 2}"
+                                key="${id++}"
+                                fill="${otherColor}"
+                                cx="${x + 0.5}"
+                                cy="${y + 0.5}"
                             />`
                         );
                     }
@@ -276,15 +276,15 @@ export default function listPoints(qrcode, params) {
                             }
                             pointList.push(
                                 `<line
-                                    opacity=${opacity}
-                                    x1=${x + 0.5}
-                                    y1=${y + 0.5}
-                                    x2=${x + 0.5}
-                                    y2=${y + end - start - 1 + 0.5}
-                                    stroke-width=${size}
-                                    stroke=${otherColor}
+                                    opacity="${opacity}"
+                                    x1="${x + 0.5}"
+                                    y1="${y + 0.5}"
+                                    x2="${x + 0.5}"
+                                    y2="${y + end - start - 1 + 0.5}"
+                                    stroke-width="${size}"
+                                    stroke="${otherColor}"
                                     stroke-linecap="round"
-                                    key=${id++}
+                                    key="${id++}"
                                 />`
                             );
                         }
@@ -314,15 +314,15 @@ export default function listPoints(qrcode, params) {
                             }
                             pointList.push(
                                 `<line
-                                    opacity=${opacity}
-                                    x1=${x + 0.5}
-                                    y1=${y + 0.5}
-                                    x2=${x + end - start - 0.5}
-                                    y2=${y + 0.5}
-                                    stroke-width=${size}
-                                    stroke=${otherColor}
+                                    opacity="${opacity}"
+                                    x1="${x + 0.5}"
+                                    y1="${y + 0.5}"
+                                    x2="${x + end - start - 0.5}"
+                                    y2="${y + 0.5}"
+                                    stroke-width="${size}"
+                                    stroke="${otherColor}"
                                     stroke-linecap="round"
-                                    key=${id++}
+                                    key="${id++}"
                                 />`
                             );
                         }
@@ -330,12 +330,12 @@ export default function listPoints(qrcode, params) {
                     if (available[x][y]) {
                         pointList.push(
                             `<circle
-                                opacity=${opacity}
-                                r=${size / 2}
-                                key=${id++}
-                                fill=${otherColor}
-                                cx=${x + 0.5}
-                                cy=${y + 0.5}
+                                opacity="${opacity}"
+                                r="${size / 2}"
+                                key="${id++}"
+                                fill="${otherColor}"
+                                cx="${x + 0.5}"
+                                cy="${y + 0.5}"
                             />`
                         );
                     }
@@ -369,15 +369,15 @@ export default function listPoints(qrcode, params) {
                                 }
                                 pointList.push(
                                     `<line
-                                        opacity=${opacity}
-                                        x1=${x + 0.5}
-                                        y1=${y + 0.5}
-                                        x2=${x + 0.5}
-                                        y2=${y + end - start - 1 + 0.5}
-                                        stroke-width=${size}
-                                        stroke=${otherColor}
+                                        opacity="${opacity}"
+                                        x1="${x + 0.5}"
+                                        y1="${y + 0.5}"
+                                        x2="${x + 0.5}"
+                                        y2="${y + end - start - 1 + 0.5}"
+                                        stroke-width="${size}"
+                                        stroke="${otherColor}"
                                         stroke-linecap="round"
-                                        key=${id++}
+                                        key="${id++}"
                                     />`
                                 );
                             }
@@ -409,15 +409,15 @@ export default function listPoints(qrcode, params) {
                                 }
                                 pointList.push(
                                     `<line
-                                        opacity=${opacity}
-                                        x1=${x + 0.5}
-                                        y1=${y + 0.5}
-                                        x2=${x + end - start - 0.5}
-                                        y2=${y + 0.5}
-                                        stroke-width=${size}
-                                        stroke=${otherColor}
+                                        opacity="${opacity}"
+                                        x1="${x + 0.5}"
+                                        y1="${y + 0.5}"
+                                        x2="${x + end - start - 0.5}"
+                                        y2="${y + 0.5}"
+                                        stroke-width="${size}"
+                                        stroke="${otherColor}"
                                         stroke-linecap="round"
-                                        key=${id++}
+                                        key="${id++}"
                                     />`
                                 );
                             }
@@ -426,12 +426,12 @@ export default function listPoints(qrcode, params) {
                     if (available[x][y]) {
                         pointList.push(
                             `<circle
-                                opacity=${opacity}
-                                r=${size / 2}
-                                key=${id++}
-                                fill=${otherColor}
-                                cx=${x + 0.5}
-                                cy=${y + 0.5}
+                                opacity="${opacity}"
+                                r="${size / 2}"
+                                key="${id++}"
+                                fill="${otherColor}"
+                                cx="${x + 0.5}"
+                                cy="${y + 0.5}"
                             />`
                         );
                     }
@@ -465,15 +465,15 @@ export default function listPoints(qrcode, params) {
                             }
                             pointList.push(
                                 `<line
-                                    opacity=${opacity}
-                                    x1=${x + 0.5}
-                                    y1=${y + 0.5}
-                                    x2=${x + end - start - 1 + 0.5}
-                                    y2=${y + end - start - 1 + 0.5}
-                                    stroke-width=${size}
-                                    stroke=${otherColor}
+                                    opacity="${opacity}"
+                                    x1="${x + 0.5}"
+                                    y1="${y + 0.5}"
+                                    x2="${x + end - start - 1 + 0.5}"
+                                    y2="${y + end - start - 1 + 0.5}"
+                                    stroke-width="${size}"
+                                    stroke="${otherColor}"
                                     stroke-linecap="round"
-                                    key=${id++}
+                                    key="${id++}"
                                 />`
                             );
                         }
@@ -481,12 +481,12 @@ export default function listPoints(qrcode, params) {
                     if (available[x][y]) {
                         pointList.push(
                             `<circle
-                                opacity=${opacity}
-                                r=${size / 2}
-                                key=${id++}
-                                fill=${otherColor}
-                                cx=${x + 0.5}
-                                cy=${y + 0.5}
+                                opacity="${opacity}"
+                                r="${size / 2}"
+                                key="${id++}"
+                                fill="${otherColor}"
+                                cx="${x + 0.5}"
+                                cy="${y + 0.5}"
                             />`
                         );
                     }
@@ -520,15 +520,15 @@ export default function listPoints(qrcode, params) {
                             }
                             pointList.push(
                                 `<line
-                                    opacity=${opacity}
-                                    x1=${x + 0.5}
-                                    y1=${y + 0.5}
-                                    x2=${x + (end - start - 1) + 0.5}
-                                    y2=${y - (end - start - 1) + 0.5}
-                                    stroke-width=${size}
-                                    stroke=${otherColor}
+                                    opacity="${opacity}"
+                                    x1="${x + 0.5}"
+                                    y1="${y + 0.5}"
+                                    x2="${x + (end - start - 1) + 0.5}"
+                                    y2="${y - (end - start - 1) + 0.5}"
+                                    stroke-width="${size}"
+                                    stroke="${otherColor}"
                                     stroke-linecap="round"
-                                    key=${id++}
+                                    key="${id++}"
                                 />`
                             );
                         }
@@ -536,12 +536,12 @@ export default function listPoints(qrcode, params) {
                     if (available[x][y]) {
                         pointList.push(
                             `<circle
-                                opacity=${opacity}
-                                r=${size / 2}
-                                key=${id++}
-                                fill=${otherColor}
-                                cx=${x + 0.5}
-                                cy=${y + 0.5}
+                                opacity="${opacity}"
+                                r="${size / 2}"
+                                key="${id++}"
+                                fill="${otherColor}"
+                                cx="${x + 0.5}"
+                                cy="${y + 0.5}"
                             />`
                         );
                     }
@@ -574,15 +574,15 @@ export default function listPoints(qrcode, params) {
                             }
                             pointList.push(
                                 `<line
-                                    opacity=${opacity}
-                                    x1=${x + 0.5}
-                                    y1=${y + 0.5}
-                                    x2=${x + (end - start - 1) + 0.5}
-                                    y2=${y - (end - start - 1) + 0.5}
-                                    stroke-width=${(size / 2) * rand(0.3, 1)}
-                                    stroke=${otherColor}
+                                    opacity="${opacity}"
+                                    x1="${x + 0.5}"
+                                    y1="${y + 0.5}"
+                                    x2="${x + (end - start - 1) + 0.5}"
+                                    y2="${y - (end - start - 1) + 0.5}"
+                                    stroke-width="${(size / 2) * rand(0.3, 1)}"
+                                    stroke="${otherColor}"
                                     stroke-linecap="round"
-                                    key=${id++}
+                                    key="${id++}"
                                 />`
                             );
                         }
@@ -614,27 +614,27 @@ export default function listPoints(qrcode, params) {
                             }
                             pointList.push(
                                 `<line
-                                    opacity=${opacity}
-                                    x1=${x + 0.5}
-                                    y1=${y + 0.5}
-                                    x2=${x + end - start - 1 + 0.5}
-                                    y2=${y + end - start - 1 + 0.5}
-                                    stroke-width=${(size / 2) * rand(0.3, 1)}
-                                    stroke=${otherColor}
+                                    opacity="${opacity}"
+                                    x1="${x + 0.5}"
+                                    y1="${y + 0.5}"
+                                    x2="${x + end - start - 1 + 0.5}"
+                                    y2="${y + end - start - 1 + 0.5}"
+                                    stroke-width="${(size / 2) * rand(0.3, 1)}"
+                                    stroke="${otherColor}"
                                     stroke-linecap="round"
-                                    key=${id++}
+                                    key="${id++}"
                                 />`
                             );
                         }
                     }
                     pointList.push(
                         `<circle
-                            opacity=${opacity}
-                            r=${0.5 * rand(0.33, 0.9)}
-                            key=${id++}
-                            fill=${otherColor}
-                            cx=${x + 0.5}
-                            cy=${y + 0.5}
+                            opacity="${opacity}"
+                            r="${0.5 * rand(0.33, 0.9)}"
+                            key="${id++}"
+                            fill="${otherColor}"
+                            cx="${x + 0.5}"
+                            cy="${y + 0.5}"
                         />`
                     );
                 }
