@@ -1,7 +1,7 @@
 {
     "name": "beautify-qrcode",
-    "version": "1.0.0",
-    "description": "webpack多页面脚手架",
+    "version": "1.0.1",
+    "description": "艺术二维码",
     "main": "./dist/beautifyQrcode.js",
     "directories": {
         "doc": "doc"
