@@ -6,11 +6,8 @@ export default function listPoints(qrcode, params) {
     const nCount = qrcode.getModuleCount();
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
-    // const contrast = params[1];
-    // const exposure = params[2];
     const alignType = params[3];
     const timingType = params[4];
-    // const otherColor = params[5];
     const posColor = params[6];
 
     let id = 0;
@@ -49,7 +46,7 @@ export default function listPoints(qrcode, params) {
                                 key="${id++}"
                                 xlink:href="#S-white"
                                 x="${posX + 1}"
-                                y="${posY + 1}"
+                                y='${posY + 1}'
                             />`
                         );
                     } else {

@@ -78,7 +78,7 @@ export default function listPoints(qrcode, params) {
                         );
                     else if (type === 1)
                         pointList.push(
-                            `<circle
+                           `<circle
                                 opacity="${opacity}"
                                 r="${size / 2}"
                                 key="${id++}"
@@ -133,7 +133,7 @@ export default function listPoints(qrcode, params) {
                         );
                     } else if (posType === 2) {
                         pointList.push(
-                            `<circle
+                           `<circle
                                 key="${id++}"
                                 fill="white"
                                 cx="${x + 0.5}"

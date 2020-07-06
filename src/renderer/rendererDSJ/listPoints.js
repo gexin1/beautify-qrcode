@@ -140,7 +140,7 @@ export default function listPoints(qrcode, params) {
                                 y2="${y + 3 - width1 / Math.sqrt(8)}"
                                 fill="none"
                                 stroke="#0B2D97"
-                                stroke-width="${width1}"
+                                stroke-width=${width1}
                             />`
                         );
                         g1.push(

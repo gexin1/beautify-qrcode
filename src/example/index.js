@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable no-unused-vars */
 import {
     encodeData,
@@ -9,7 +10,12 @@ import {
     rendererRandRect,
     rendererImage,
     rendererResImage,
-} from '../../dist/beautifyQrcode';
+    rendererCircle,
+    rendererFuncA,
+    rendererFuncB,
+    rendererLine,
+    rendererLine2,
+} from '@/index';
 import {
     defaultResImage,
     QRBTF_URL,
@@ -33,6 +39,11 @@ window.onload = () => {
     const C1 = rendererImage(qrcode, {
         backgroudImage: Rem,
     });
+    const A_a1 = rendererLine(qrcode);
+    const A_a2 = rendererLine2(qrcode);
+    const A_b1 = rendererFuncA(qrcode);
+    const A_b2 = rendererFuncB(qrcode);
+    const SP_3 = rendererCircle(qrcode);
     rendererResImage(qrcode, { backgroudImage: defaultResImage }).then(
         (res) => {
             document.querySelector('.c2').innerHTML = res;
@@ -47,6 +58,11 @@ window.onload = () => {
     <li>${sp2}</li>
     <li>${B1}</li>
     <li>${C1}</li>
+    <li>${A_a1}</li>
+    <li>${A_a2}</li>
+    <li>${A_b1}</li>
+    <li>${A_b2}</li>
+    <li>${SP_3}</li>
     <li class="c2"></li>
     </ul>`;
 };
