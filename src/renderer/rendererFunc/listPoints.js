@@ -134,11 +134,11 @@ export default function listPoints(qrcode, params) {
                     pointList.push(
                         `<path
                             key=${id++}
-                            d=${sq25}
+                            d="${sq25}"
                             stroke=${posColor}
                             stroke-width=${(100 / 6) * (1 - (1 - 0.8) * 0.75)}
                             fill="none"
-                            transform=${
+                            transform="${
                                 'translate(' +
                                 String(x - 2.5) +
                                 ',' +
@@ -149,7 +149,7 @@ export default function listPoints(qrcode, params) {
                                 ',' +
                                 String(6 / 100) +
                                 ')'
-                            }
+                            }"
                         />`
                     );
                 }

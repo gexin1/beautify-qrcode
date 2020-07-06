@@ -3,31 +3,21 @@ import { createRenderer } from '@/utils/renderer';
 import listPoints from './listPoints';
 
 const schemaLine = yup.object().shape({
-    // 连线方向      "左右","上下","纵横","回环","左上 — 右下","右上 — 左下","交叉"
-    type: yup.mixed().oneOf([0, 1, 2, 3, 4, 5, 6, 7]).default(2),
-    // 连线粗细
+    type: yup.mixed().oneOf([0, 1, 2, 3, 4, 5, 6]).default(2),
     size: yup.number().default(50),
-    // 连线不透明度
     opacity: yup.number().default(100),
-    // 定位点样式  "矩形","圆形", "行星","圆角矩形"
     posType: yup.mixed().oneOf([0, 1, 2, 3]).default(3),
-    // 连线颜色
     otherColor: yup.string().default('#000000'),
-    // 定位点颜色
     posColor: yup.string().default('#000000'),
 });
 const schemaLine2 = yup.object().shape({
-    // 连线方向      "左右","上下","纵横","回环","左上 — 右下","右上 — 左下","交叉"
-    type: yup.mixed().oneOf([0, 1, 2, 3, 4, 5, 6, 7]).default(6),
-    // 连线粗细
+    type: yup.mixed().oneOf([0, 1, 2, 3, 4, 5, 6]).default(6),
     size: yup.number().default(50),
-    // 连线不透明度
     opacity: yup.number().default(100),
-    // 定位点样式  "矩形","圆形", "行星","圆角矩形"
     posType: yup.mixed().oneOf([0, 1, 2, 3]).default(0),
-    // 连线颜色
+
     otherColor: yup.string().default('#000000'),
-    // 定位点颜色
+
     posColor: yup.string().default('#000000'),
 });
 

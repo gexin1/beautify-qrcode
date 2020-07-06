@@ -9,8 +9,8 @@ const schemaBase = yup.object().shape({
     size: yup.number().default(100),
     // 信息点不透明度
     opacity: yup.number().default(100),
-    // 定位点样式['矩形', '圆形', '行星']
-    posType: yup.mixed().oneOf([0, 1, 2]).default(0),
+    // 定位点样式['矩形', '圆形', '行星','圆角矩形']
+    posType: yup.mixed().oneOf([0, 1, 2, 3]).default(0),
     // 信息点颜色
     otherColor: yup.string().default('#000000'),
     // 定位点点颜色
@@ -24,7 +24,7 @@ const schemaBase = yup.object().shape({
  * @param {Number} [options.type]  信息点样式 0=>矩形 1=>圆形,2=>随机
  * @param {Number} [options.size] 信息点缩放
  * @param {String} [options.opacity]  信息点不透明度
- * @param {String} [options.posType] 定位点样式 0=>矩形 1=>圆形 2=>行星
+ * @param {String} [options.posType] 定位点样式 0=>矩形 1=>圆形 2=>行星 3=>圆角矩形
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
  */

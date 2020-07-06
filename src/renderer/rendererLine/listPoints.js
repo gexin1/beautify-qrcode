@@ -107,7 +107,7 @@ export default function listPoints(qrcode, params) {
                     }
                     for (let h = 0; h < vh.length; h++) {
                         pointList.push(
-                           `<circle
+                            `<circle
                                 key=${id++}
                                 fill=${posColor}
                                 cx=${x + 0.5}
@@ -129,22 +129,13 @@ export default function listPoints(qrcode, params) {
                     pointList.push(
                         `<path
                             key=${id++}
-                            d=${sq25}
+                            d="${sq25}"
                             stroke=${posColor}
                             stroke-width=${(100 / 6) * (1 - (1 - size) * 0.75)}
                             fill="none"
-                            transform=${
-                                'translate(' +
-                                String(x - 2.5) +
-                                ',' +
-                                String(y - 2.5) +
-                                ') ' +
-                                'scale(' +
-                                String(6 / 100) +
-                                ',' +
-                                String(6 / 100) +
-                                ')'
-                            }
+                            transform="${`translate(${String(x - 2.5)},${String(
+                                y - 2.5
+                            )}) scale(${String(6 / 100)},${String(6 / 100)})`}"
                         />`
                     );
                 }
