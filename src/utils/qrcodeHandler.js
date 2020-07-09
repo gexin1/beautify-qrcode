@@ -29,12 +29,13 @@ export function encodeData(options) {
     options = {
         ...{
             render: 'canvas',
-            width: 256,
-            height: 256,
+            width: "100%",
+            height: "100%",
             typeNumber: -1,
             correctLevel: 1,
             background: '#ffffff',
             foreground: '#000000',
+            isSpace:true
         },
         ...options,
     };
@@ -42,7 +43,7 @@ export function encodeData(options) {
     const qrcode = new QRCodeEncoder(options.typeNumber, options.correctLevel);
     qrcode.addData(options.text);
     qrcode.make();
-
+    qrcode.$options=options;
     return qrcode;
 }
 

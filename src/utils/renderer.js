@@ -3,15 +3,12 @@ export function createRenderer(renderer) {
         if (!qrcode) return '0 0 0 0';
 
         const nCount = qrcode.getModuleCount();
-        return (
-            String(-nCount / 5) +
-            ' ' +
-            String(-nCount / 5) +
-            ' ' +
-            String(nCount + (nCount / 5) * 2) +
-            ' ' +
-            String(nCount + (nCount / 5) * 2)
-        );
+        // 不留间隔
+        return qrcode.$options.isSpace
+            ? `${-nCount / 5} ${-nCount / 5} ${nCount + (nCount / 5) * 2} ${
+                  nCount + (nCount / 5) * 2
+              }`
+            : `${0} ${0} ${nCount} ${nCount}`;
     };
 
     renderer = {
@@ -31,10 +28,11 @@ export function createRenderer(renderer) {
     };
 
     return ({ qrcode, params }) => {
+        const { width, height } = qrcode.$options;
         return `
-            <svg className="Qr-item-svg" width="100%" height="100%" viewBox="${renderer.getViewBox(
-                qrcode
-            )}" fill="white"
+            <svg width="${width}" height="${height}" viewBox="${renderer.getViewBox(
+            qrcode
+        )}" fill="white"
                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 ${renderer.listPoints(qrcode, params).join('')}
             </svg>
