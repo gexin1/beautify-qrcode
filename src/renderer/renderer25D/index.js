@@ -6,15 +6,9 @@ function viewBox(qrcode) {
     if (!qrcode) return '0 0 0 0';
 
     const nCount = qrcode.getModuleCount();
-    return (
-        String(-nCount) +
-        ' ' +
-        String(-nCount / 2) +
-        ' ' +
-        String(nCount * 2) +
-        ' ' +
-        String(nCount * 2)
-    );
+    return qrcode.$options.isSpace
+        ? `${-nCount} ${-nCount / 2} ${nCount * 2} ${nCount * 2}`
+        : `${-nCount + 3} ${-nCount / 2} ${nCount * 2 - 6} ${nCount * 2 - 6}`;
 }
 const schema25D = yup.object().shape({
     // 柱体高度

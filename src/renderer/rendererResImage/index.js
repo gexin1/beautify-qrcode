@@ -5,15 +5,11 @@ function getViewBox(qrcode) {
     if (!qrcode) return '0 0 0 0';
 
     const nCount = qrcode.getModuleCount() * 3;
-    return (
-        String(-nCount / 5) +
-        ' ' +
-        String(-nCount / 5) +
-        ' ' +
-        String(nCount + (nCount / 5) * 2) +
-        ' ' +
-        String(nCount + (nCount / 5) * 2)
-    );
+    return qrcode.$options.isSpace
+        ? `${-nCount / 5} ${-nCount / 5} ${nCount + (nCount / 5) * 2} ${
+              nCount + (nCount / 5) * 2
+          }`
+        : `${0} ${0} ${nCount} ${nCount}`;
 }
 
 function getGrayPointList(params, size, black, white) {
@@ -62,7 +58,7 @@ function getGrayPointList(params, size, black, white) {
 
 const RendererResImage = ({ qrcode, params }) => {
     const otherColor = params[5];
-
+    const { width, height } = qrcode.$options;
     return new Promise((resolve, reject) => {
         getGrayPointList(
             params,
@@ -73,8 +69,8 @@ const RendererResImage = ({ qrcode, params }) => {
             .then((gpl) => {
                 const svg = `<svg
             className="Qr-item-svg"
-            width="100%"
-            height="100%"
+            width="${width}"
+            height="${height}"
             viewBox="${getViewBox(qrcode)}"
             fill="white"
             xmlns="http://www.w3.org/2000/svg"

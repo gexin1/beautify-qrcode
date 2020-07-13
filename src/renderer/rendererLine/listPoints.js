@@ -43,8 +43,8 @@ export default function listPoints(qrcode, params) {
                 if (posType === 0) {
                     pointList.push(
                         `<rect
-                            width=${1}
-                            height=${1}
+                            width="${1}"
+                            height="${1}"
                             key="${id++}"
                             fill="${posColor}"
                             x="${x}"

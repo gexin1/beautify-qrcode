@@ -30,11 +30,11 @@ export default function listPoints(qrcode, params) {
             `<circle
                 key="${id++}"
                 fill="none"
-                stroke-width=${nCount / 15}
-                stroke=${otherColor2}
-                cx=${nCount / 2}
-                cy=${nCount / 2}
-                r=${((nCount / 2) * Math.sqrt(2) * 13) / 40}
+                stroke-width="${nCount / 15}"
+                stroke="${otherColor2}"
+                cx="${nCount / 2}"
+                cy="${nCount / 2}"
+                r="${((nCount / 2) * Math.sqrt(2) * 13) / 40}"
             />`
         );
     }
