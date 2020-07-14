@@ -25,7 +25,7 @@ const schemaFuncB = yup.object().shape({
  * @param {Object} qrcode
  * @param {Object} options
  * @param {Number} [options.type]  信息点样式 0=>矩形 1=>圆形
- * @param {Number} [options.size] 干扰函数 1=>A 2=>B
+ * @param {Number} [options.size] 干扰函数 0=>A 1=>B
  * @param {String} [options.opacity]  信息点不透明度
  * @param {String} [options.posType] 定位点样式  0=>矩形 1=>圆形 2=>行星 3=>圆角矩形
  * @param {String} [options.otherColor] 信息点颜色
