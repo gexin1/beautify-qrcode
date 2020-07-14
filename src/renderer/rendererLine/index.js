@@ -25,7 +25,7 @@ const schemaLine2 = yup.object().shape({
  *
  * @param {Object} qrcode
  * @param {Object} options
- * @param {String} [options.type]  连线方向 0=>左右 1=>上下 2=>纵横 3=>回环 4=>左上—右下 5=>右上—左下 7=>交叉"
+ * @param {String} [options.type]  连线方向 0=>左右 1=>上下 2=>纵横 3=>回环 4=>左上—右下 5=>右上—左下 6=>交叉"
  * @param {String} [options.size] 连线粗细
  * @param {String} [options.opacity] 连线不透明度
  * @param {String} [options.posType] 定位点样式  0=>矩形 1=>圆形 2=>行星 3=>圆角矩形

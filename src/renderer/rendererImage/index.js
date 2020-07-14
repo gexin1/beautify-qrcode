@@ -5,7 +5,7 @@ const schemaImage = yup.object().shape({
     // 背景图片
     backgroudImage: yup.string(),
     // 信息点样式 ['矩形', '圆形'],
-    type: yup.mixed().oneOf([0, 1, 2]).default(0),
+    type: yup.mixed().oneOf([0, 1]).default(0),
     // 信息点缩放
     size: yup.number().default(100),
     // 信息点不透明度
