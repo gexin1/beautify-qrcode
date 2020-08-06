@@ -2,18 +2,19 @@
  * @Author: river
  * @Date: 2020-04-09 11:33:23
  * @Last Modified by: river
- * @Last Modified time: 2020-06-11 18:33:27
+ * @Last Modified time: 2020-08-06 17:13:07
  */
-
+const webpack = require('webpack');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const merge = require('webpack-merge');
-const { resolve } = require('./webpack.help');
 const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const base = require('./webpack.base');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const smp = new SpeedMeasurePlugin();
+
+const { resolve, generateBanner } = require('./webpack.help');
+const base = require('./webpack.base');
+
 module.exports = smp.wrap(
     merge(base, {
         entry: resolve('../src/index.js'),
@@ -26,12 +27,7 @@ module.exports = smp.wrap(
             sourceMapFilename: 'beautifyQrcode.map',
             libraryExport: 'default',
         },
-        plugins: [
-            new CleanWebpackPlugin(),
-            new MiniCssExtractPlugin({
-                filename: 'beautifyQrcode.css',
-            }),
-        ],
+        plugins: [new CleanWebpackPlugin()],
         optimization: {
             minimizer: [
                 new OptimizeCssAssetsPlugin({
@@ -47,6 +43,10 @@ module.exports = smp.wrap(
                         ie8: true,
                         safari10: true,
                     },
+                }),
+                new webpack.BannerPlugin({
+                    banner: generateBanner(),
+                    entryOnly: true,
                 }),
             ],
         },
