@@ -178,9 +178,9 @@ export default function listPoints(qrcode, params) {
                                     opacity="${opacity}"
                                     x1="${x + 0.5}"
                                     y1="${y + 0.5}"
-                                    x2=${x + end - start - 0.5}
+                                    x2="${x + end - start - 0.5}"
                                     y2="${y + 0.5}"
-                                    stroke-width=${size}
+                                    stroke-width="${size}"
                                     stroke="${otherColor}"
                                     stroke-linecap="round"
                                     key="${id++}"
