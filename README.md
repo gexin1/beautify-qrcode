@@ -46,7 +46,7 @@ import {
     rendererRandRect,
     rendererImage,
     rendererResImage,
-} from './dist/beautifyQrcode';
+} from 'beautify-qrcode';
 /**
  * 生成二维码数据
  * @param {Object} options
