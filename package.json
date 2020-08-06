@@ -1,6 +1,6 @@
 {
     "name": "beautify-qrcode",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "艺术二维码",
     "main": "./dist/beautifyQrcode.js",
     "directories": {
