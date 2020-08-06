@@ -1,9 +1,6 @@
 # beautify-qrcode
 
-此项目来源于 QRBTF 的创意在原来的项目做了一些封装,有效解决了我的项目问题
-<br>
-当用户用图片作为背景的时候用户的大图给服务器造成了比较大的压力全部使用客户端来生成减少了服务器压力
-
+此项目来源于 QRBTF
 # QRBTF
 
 URL: [qrbtf.com](https://qrbtf.com)
@@ -33,8 +30,12 @@ const {
     rendererImage,
     rendererResImage,
 } = window.beautifyQrcode;
-
-// 使用es6
+```
+#### 使用npm
+```shell
+npm i beautify-qrcode
+```
+```javascript
 import {
     encodeData,
     renderer25D,
