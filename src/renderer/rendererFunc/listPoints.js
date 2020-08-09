@@ -136,7 +136,7 @@ export default function listPoints(qrcode, params) {
                             key="${id++}"
                             d="${sq25}"
                             stroke="${posColor}"
-                            stroke-width=${(100 / 6) * (1 - (1 - 0.8) * 0.75)}
+                            stroke-width="${(100 / 6) * (1 - (1 - 0.8) * 0.75)}"
                             fill="none"
                             transform="${
                                 'translate(' +
