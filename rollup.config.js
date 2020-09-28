@@ -9,11 +9,12 @@ import fs from 'fs';
 import path from 'path';
 import { minify } from 'uglify-js';
 import buble from '@rollup/plugin-buble';
-import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import saveLicense from 'uglify-save-license';
 import stripBanner from 'rollup-plugin-strip-banner';
-import babel from 'rollup-plugin-babel';
+import babel from '@rollup/plugin-babel';
+import { terser } from 'rollup-plugin-terser';
+import commonjs from '@rollup/plugin-commonjs';
 const copyright = fs.readFileSync(path.join('COPYRIGHT'), 'utf-8');
 
 const SRC_DIR = path.resolve('src');
@@ -29,18 +30,11 @@ export default {
         format: 'umd',
         sourcemap: false,
     },
-    external: ['yup'],
-    globals: {
-        yup: 'yup',
-    },
     plugins: [
-        commonjs({
-            sourceMap: false,
-        }),
+        commonjs(),
         json(),
         stripBanner(),
-        babel({
-            exclude: 'node_modules/**',
-        }),
+        babel({ babelHelpers: 'bundled' }),
+        terser({}),
     ],
 };
