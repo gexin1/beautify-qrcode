@@ -12,7 +12,6 @@ import rendererCircle from './renderer/rendererCircle';
 import { rendererFuncA, rendererFuncB } from './renderer/rendererFunc';
 import { rendererLine, rendererLine2 } from './renderer/rendererLine';
 import { encodeData } from './utils/qrcodeHandler';
-
 export default {
     rendererRect,
     rendererRound,

@@ -1,5 +1,5 @@
 import { getTypeTable, QRPointType } from '@/utils/qrcodeHandler';
-import { rand } from '@/utils/util';
+import { rand } from '@/utils/util.ts';
 
 export default function listPoints(qrcode, params) {
     if (!qrcode) return [];
@@ -35,7 +35,7 @@ export default function listPoints(qrcode, params) {
             ) {
                 if (type === 0)
                     pointList.push(
-                    `<rect
+                        `<rect
                             opacity="${opacity}"
                             width="${size}"
                             height="${size}"
@@ -47,7 +47,7 @@ export default function listPoints(qrcode, params) {
                     );
                 else if (type === 1)
                     pointList.push(
-                    `<circle
+                        `<circle
                             opacity="${opacity}"
                             r="${size / 2}"
                             key="${id++}"
@@ -58,7 +58,7 @@ export default function listPoints(qrcode, params) {
                     );
                 else if (type === 2)
                     pointList.push(
-                    `<circle
+                        `<circle
                             key="${id++}"
                             opacity="${opacity}"
                             fill="${otherColor}"
@@ -70,7 +70,7 @@ export default function listPoints(qrcode, params) {
             } else if (typeTable[x][y] === QRPointType.POS_CENTER) {
                 if (posType === 0) {
                     pointList.push(
-                    `<rect
+                        `<rect
                             width="${1}"
                             height="${1}"
                             key="${id++}"
@@ -81,7 +81,7 @@ export default function listPoints(qrcode, params) {
                     );
                 } else if (posType === 1) {
                     pointList.push(
-                    `<circle
+                        `<circle
                             key="${id++}"
                             fill="${posColor}"
                             cx="${x + 0.5}"
@@ -90,7 +90,7 @@ export default function listPoints(qrcode, params) {
                         />`
                     );
                     pointList.push(
-                    `<circle
+                        `<circle
                             key="${id++}"
                             fill="none"
                             stroke-width="1"
@@ -102,7 +102,7 @@ export default function listPoints(qrcode, params) {
                     );
                 } else if (posType === 2) {
                     pointList.push(
-                    `<circle
+                        `<circle
                             key="${id++}"
                             fill="${posColor}"
                             cx="${x + 0.5}"
@@ -111,7 +111,7 @@ export default function listPoints(qrcode, params) {
                         />`
                     );
                     pointList.push(
-                    `<circle
+                        `<circle
                             key="${id++}"
                             fill="none"
                             stroke-width="0.15"
@@ -135,7 +135,7 @@ export default function listPoints(qrcode, params) {
                     }
                     for (let h = 0; h < vh.length; h++) {
                         pointList.push(
-                           `<circle
+                            `<circle
                                 key="${id++}"
                                 fill="${posColor}"
                                 cx="${x + 0.5}"
@@ -155,11 +155,13 @@ export default function listPoints(qrcode, params) {
                         />`
                     );
                     pointList.push(
-                    `<path
+                        `<path
                             key="${id++}"
                             d="${sq25}"
                             stroke="${posColor}"
-                            stroke-width="${(100 / 6) * (1 - (1 - size) * 0.75)}"
+                            stroke-width="${
+                                (100 / 6) * (1 - (1 - size) * 0.75)
+                            }"
                             fill="none"
                             transform="${
                                 'translate(' +

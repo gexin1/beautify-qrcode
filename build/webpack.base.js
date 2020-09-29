@@ -2,7 +2,7 @@
  * @Author: river
  * @Date: 2020-04-09 11:33:23
  * @Last Modified by: river
- * @Last Modified time: 2020-09-29 15:39:41
+ * @Last Modified time: 2020-09-29 17:09:29
  */
 const { resolve } = require('./webpack.help');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -18,7 +18,7 @@ module.exports = {
         chunkFilename: 'js/[id].chunk.js',
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.ts', '.tsx'],
         alias: config.alias,
         modules: [resolve('../src'), 'node_modules'],
     },
@@ -27,6 +27,7 @@ module.exports = {
     },
     module: {
         rules: [
+            { test: /\.tsx?$/, loader: 'ts-loader' },
             {
                 test: /\.(js)$/,
                 loader: 'eslint-loader',

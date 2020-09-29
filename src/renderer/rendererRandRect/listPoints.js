@@ -1,4 +1,4 @@
-import { rand } from '@/utils/util';
+import { rand } from '@/utils/util.ts';
 
 export default function listPoints(qrcode, params) {
     if (!qrcode) return [];
