@@ -75,6 +75,8 @@
         "webpack-merge": "^4.2.2"
     },
     "dependencies": {
+        "htm": "^3.0.4",
+        "vhtml": "^2.2.0",
         "yup": "^0.29.1"
     },
     "husky": {
