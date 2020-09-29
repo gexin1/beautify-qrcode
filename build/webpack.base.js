@@ -2,7 +2,7 @@
  * @Author: river
  * @Date: 2020-04-09 11:33:23
  * @Last Modified by: river
- * @Last Modified time: 2020-06-11 18:38:15
+ * @Last Modified time: 2020-09-29 15:39:41
  */
 const { resolve } = require('./webpack.help');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -38,11 +38,6 @@ module.exports = {
                 },
             },
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: [...config.buildSpeed, 'babel-loader'],
-            },
-            {
                 test: /\.(png|jpg|gif|ico)$/,
                 exclude: /node_modules/,
                 use: [
@@ -73,9 +68,6 @@ module.exports = {
                     },
                     {
                         loader: 'css-loader',
-                    },
-                    {
-                        loader: 'postcss-loader',
                     },
                 ],
             },
