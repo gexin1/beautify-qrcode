@@ -41,7 +41,7 @@ window.onload = () => {
     });
     const A_a1 = rendererLine(qrcode, {
         type: 0,
-        posType:0
+        posType: 0,
     });
     const A_a2 = rendererLine2(qrcode);
     const A_b1 = rendererFuncA(qrcode);
