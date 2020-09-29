@@ -18,11 +18,10 @@
         "lint:style": "stylelint **/*.{css,scss,sass}",
         "fix:style": "npm run lint:style --fix",
         "fix:script": "npm run lint:script --fix",
-        "release": "npm run build-rollup",
-        "build-rollup": "npm run build:commonjs && npm run build:modules && npm run build:min",
-        "build:commonjs": "rollup -c ./rollup.config.js",
-        "build:modules": "rollup -c ./rollup.config.es.js",
-        "build:min": "rollup -c ./rollup.config.min.js"
+        "release": "npm run build:commonjs && npm run build:modules && npm run build:min",
+        "build:commonjs": "rollup -c ./rollup/rollup.config.js",
+        "build:modules": "rollup -c ./rollup/rollup.config.es.js",
+        "build:min": "rollup -c ./rollup/rollup.config.min.js"
     },
     "repository": {
         "type": "git",
