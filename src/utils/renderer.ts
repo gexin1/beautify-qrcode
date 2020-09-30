@@ -1,9 +1,32 @@
-export function createRenderer(renderer) {
-    const defaultViewBox = function (qrcode) {
+import QRCodeEncoder from './qrcodeEncoder';
+
+interface Renderer {
+    getViewBox: (qrcode: QRCodeEncoder) => string;
+    listPoints: (qrcode: QRCodeEncoder, params: object) => string[];
+    getParamInfo: () => [];
+    beginRendering: ({}: {
+        qrcode: QRCodeEncoder;
+        params: object;
+        setParamInfo: () => {};
+    }) => void;
+    beforeListing: ({}: {
+        qrcode: QRCodeEncoder;
+        params: object;
+        setParamInfo: () => {};
+    }) => void;
+    afterListing: ({}: {
+        qrcode: QRCodeEncoder;
+        params: object;
+        setParamInfo: () => {};
+    }) => void;
+}
+
+export function createRenderer(renderer: Partial<Renderer>) {
+    const defaultViewBox = function (qrcode: QRCodeEncoder):string {
         if (!qrcode) return '0 0 0 0';
 
         const nCount = qrcode.getModuleCount();
-        // 不留间隔
+
         return qrcode.$options.isSpace
             ? `${-nCount / 5} ${-nCount / 5} ${nCount + (nCount / 5) * 2} ${
                   nCount + (nCount / 5) * 2
@@ -11,7 +34,7 @@ export function createRenderer(renderer) {
             : `${0} ${0} ${nCount} ${nCount}`;
     };
 
-    renderer = {
+    const completeRenderer: Renderer = {
         ...{
             getViewBox: defaultViewBox,
             listPoints: (qrcode, params) => {
@@ -27,14 +50,14 @@ export function createRenderer(renderer) {
         ...renderer,
     };
 
-    return ({ qrcode, params }) => {
+    return ({ qrcode, params }: { qrcode: QRCodeEncoder; params: object }) => {
         const { width, height } = qrcode.$options;
         return `
-            <svg width="${width}" height="${height}" viewBox="${renderer.getViewBox(
+            <svg width="${width}" height="${height}" viewBox="${completeRenderer.getViewBox(
             qrcode
         )}" fill="white"
                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                ${renderer.listPoints(qrcode, params).join('')}
+                ${completeRenderer.listPoints(qrcode, params).join('')}
             </svg>
         `;
     };

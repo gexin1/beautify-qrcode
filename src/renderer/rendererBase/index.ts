@@ -1,6 +1,17 @@
 import * as yup from 'yup';
-import { createRenderer } from '@/utils/renderer';
+import { createRenderer } from '@/utils/renderer.ts';
 import listPoints from './listPoints';
+
+import QRCodeEncoder from '@/utils/qrcodeEncoder';
+
+export interface BaseOptions {
+    type: 0 | 1 | 2;
+    size: number;
+    opacity: number;
+    posType: 0 | 1 | 2 | 3;
+    otherColor: string;
+    posColor: string;
+}
 
 const schemaBase = yup.object().shape({
     // 信息点样式 ['矩形', '圆形', '随机']
@@ -28,25 +39,35 @@ const schemaBase = yup.object().shape({
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
  */
-const rendererBase = (qrcode, options) => {
-    try {
-        options = schemaBase.validateSync(options);
-    } catch (err) {
-        console.error(err);
-        return '';
-    }
-
-    const params = [
-        'type',
-        'size',
-        'opacity',
-        'posType',
-        'otherColor',
-        'posColor',
-    ].map((k) => options[k]);
+const rendererBase = (qrcode: QRCodeEncoder, options: Partial<BaseOptions>) => {
+    // try {
+    //     options = schemaBase.validateSync(options);
+    // } catch (err) {
+    //     console.error(err);
+    //     return '';
+    // }
+    const params: BaseOptions = {
+        ...{
+            type: 0,
+            size: 100,
+            opacity: 100,
+            posType: 0,
+            otherColor: '#000000',
+            posColor: '#000000',
+        },
+        ...options,
+    };
+    // const params = [
+    //     'type',
+    //     'size',
+    //     'opacity',
+    //     'posType',
+    //     'otherColor',
+    //     'posColor',
+    // ].map((k) => options[k]);
 
     const svg = createRenderer({
-        listPoints: listPoints,
+        listPoints,
     })({ qrcode, params });
 
     return svg;

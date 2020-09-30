@@ -1,20 +1,20 @@
 import { getTypeTable, QRPointType } from '@/utils/qrcodeHandler';
 import { rand } from '@/utils/util.ts';
+import QRCodeEncoder from '@/utils/qrcodeEncoder';
+import { BaseOptions } from './index';
 
-export default function listPoints(qrcode, params) {
+export default function listPoints(
+    qrcode: QRCodeEncoder,
+    params: BaseOptions
+): string[] {
     if (!qrcode) return [];
-
+    const { type, opacity, posType, otherColor, posColor } = params;
+    let { size } = params;
     const nCount = qrcode.getModuleCount();
     const typeTable = getTypeTable(qrcode);
     const pointList = new Array(nCount);
 
-    const type = params[0];
-    let size = params[1] / 100;
-    const opacity = params[2] / 100;
-    const posType = params[3];
     let id = 0;
-    const otherColor = params[4];
-    const posColor = params[5];
 
     const vw = [3, -3];
     const vh = [3, -3];

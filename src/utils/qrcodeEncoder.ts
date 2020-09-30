@@ -13,6 +13,9 @@
 //   http://www.denso-wave.com/qrcode/faqpatent-e.html
 //
 // ---------------------------------------------------------------------
+
+import { CompleteOptions } from './qrcodeHandler';
+
 /* eslint-disable */
 class QR8BitByte {
     mode: number;
@@ -80,6 +83,8 @@ class QRCode {
     dataList: QR8BitByte[];
     static PAD0 = 0xEC;
     static PAD1 = 0x11;
+    // 增加options
+    $options!: CompleteOptions;
     
     constructor(typeNumber: number, errorCorrectLevel: number) {
         this.typeNumber = typeNumber;

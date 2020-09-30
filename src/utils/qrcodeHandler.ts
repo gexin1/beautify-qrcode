@@ -24,7 +24,7 @@ export var QRPointType = {
  * @param {String} [options.foreground]
  */
 
-interface EncodeOptions {
+export interface EncodeOptions {
     text: string;
     render?: string;
     width?: string;
@@ -36,10 +36,12 @@ interface EncodeOptions {
     isSpace?: boolean;
 }
 
-export function encodeData(options: EncodeOptions) {
+export type CompleteOptions = Required<EncodeOptions>;
+
+export function encodeData(options: EncodeOptions): QRCodeEncoder | null {
     if (!options.text || options.text.length <= 0) return null;
 
-     options = {
+    const completeOptions: CompleteOptions = {
         ...{
             render: 'canvas',
             width: '100%',
@@ -51,16 +53,19 @@ export function encodeData(options: EncodeOptions) {
             isSpace: true,
         },
         ...options,
-    } as Required<EncodeOptions>;
+    };
 
-    const qrcode = new QRCodeEncoder(options.typeNumber, options.correctLevel);
-    qrcode.addData(options.text);
+    const qrcode = new QRCodeEncoder(
+        completeOptions.typeNumber,
+        completeOptions.correctLevel
+    );
+    qrcode.addData(completeOptions.text);
     qrcode.make();
-    qrcode.$options = options;
+    qrcode.$options = completeOptions;
     return qrcode;
 }
 
-export function getTypeTable(qrcode: QRCodeEncoder) {
+export function getTypeTable(qrcode: QRCodeEncoder): number[][] {
     const nCount = qrcode.getModuleCount();
     const position = qrcode.getPositionTable();
     const PD = [
