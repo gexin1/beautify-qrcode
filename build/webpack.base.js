@@ -27,7 +27,23 @@ module.exports = {
     },
     module: {
         rules: [
-            { test: /\.tsx?$/, loader: 'ts-loader' },
+            {
+                test: /\.ts$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true,
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.tsx$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader!ts-loader',
+            },
             {
                 test: /\.(js)$/,
                 loader: 'eslint-loader',

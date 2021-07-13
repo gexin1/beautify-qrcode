@@ -1,11 +1,11 @@
 import { getTypeTable, QRPointType } from '@/utils/qrcodeHandler';
-import { rand } from '@/utils/util.ts';
+import { rand } from '@/utils/util';
 import QRCodeEncoder from '@/utils/qrcodeEncoder';
 import { BaseOptions } from './index';
 
 export default function listPoints(
     qrcode: QRCodeEncoder,
-    params: BaseOptions
+    params: BaseOptions 
 ): string[] {
     if (!qrcode) return [];
     const { type, opacity, posType, otherColor, posColor } = params;

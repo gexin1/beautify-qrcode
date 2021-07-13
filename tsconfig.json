@@ -6,6 +6,7 @@
         "outDir": "./dist",
         "allowJs": false,
         "jsx": "react",
+        "jsxFactory": "pragma",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,

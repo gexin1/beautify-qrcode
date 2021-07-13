@@ -1,3 +1,5 @@
-declare module 'vhtml' {
-    export default function h(name: string | Function, attrs: object): string;
+declare namespace JSX {
+    interface IntrinsicElements {
+        [elemName: string]: any;
+    }
 }

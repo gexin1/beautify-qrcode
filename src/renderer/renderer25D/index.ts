@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 import { createRenderer } from '@/utils/renderer';
 import listPoints from './listPoints';
-
-function viewBox(qrcode) {
+import QRCodeEncoder from '@/utils/qrcodeEncoder';
+function viewBox(qrcode:QRCodeEncoder) {
     if (!qrcode) return '0 0 0 0';
 
     const nCount = qrcode.getModuleCount();
@@ -33,7 +33,7 @@ const schema25D = yup.object().shape({
  * @param {String} [options.leftColor] 左侧颜色
  * @param {String} [options.rightColor] 右侧颜色
  */
-const Renderer25D = (qrcode, options) => {
+const Renderer25D = (qrcode:QRCodeEncoder, options:any) => {
     try {
         options = schema25D.validateSync(options);
     } catch (err) {

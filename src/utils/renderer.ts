@@ -1,24 +1,17 @@
 import QRCodeEncoder from './qrcodeEncoder';
 
+interface rendererOption{
+    qrcode: QRCodeEncoder;
+    params: Object;
+    setParamInfo: () => {};
+}
 interface Renderer {
     getViewBox: (qrcode: QRCodeEncoder) => string;
-    listPoints: (qrcode: QRCodeEncoder, params: object) => string[];
+    listPoints: (qrcode: QRCodeEncoder, params: any) => string[];
     getParamInfo: () => [];
-    beginRendering: ({}: {
-        qrcode: QRCodeEncoder;
-        params: object;
-        setParamInfo: () => {};
-    }) => void;
-    beforeListing: ({}: {
-        qrcode: QRCodeEncoder;
-        params: object;
-        setParamInfo: () => {};
-    }) => void;
-    afterListing: ({}: {
-        qrcode: QRCodeEncoder;
-        params: object;
-        setParamInfo: () => {};
-    }) => void;
+    beginRendering: (options:rendererOption) => void;
+    beforeListing: (options:rendererOption) => void;
+    afterListing: (options:rendererOption) => void
 }
 
 export function createRenderer(renderer: Partial<Renderer>) {

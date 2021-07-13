@@ -1,6 +1,6 @@
 {
     "root": true,
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "globals": {},
     "parserOptions": {
         "sourceType": "module",

@@ -1,3 +1,4 @@
+import { pragma } from 'html-tsx';
 import {
     rendererRect,
     rendererRound,

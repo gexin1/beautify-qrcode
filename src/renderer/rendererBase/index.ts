@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { createRenderer } from '@/utils/renderer.ts';
+import { createRenderer } from '@/utils/renderer';
 import listPoints from './listPoints';
 
 import QRCodeEncoder from '@/utils/qrcodeEncoder';
@@ -83,7 +83,7 @@ const rendererBase = (qrcode: QRCodeEncoder, options: Partial<BaseOptions>) => {
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
  */
-export const rendererRect = (qrcode, options = {}) => {
+export const rendererRect = (qrcode:QRCodeEncoder, options = {}) => {
     options = {
         ...{
             type: 0,
@@ -106,7 +106,7 @@ export const rendererRect = (qrcode, options = {}) => {
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
  */
-export const rendererRound = (qrcode, options = {}) => {
+export const rendererRound = (qrcode:QRCodeEncoder, options = {}) => {
     options = {
         ...{
             type: 1,
@@ -129,7 +129,7 @@ export const rendererRound = (qrcode, options = {}) => {
  * @param {String} [options.otherColor] 信息点颜色
  * @param {String} [options.posColor] 定位点点颜色
  */
-export const rendererRandRound = (qrcode, options = {}) => {
+export const rendererRandRound = (qrcode:QRCodeEncoder, options = {}) => {
     options = {
         ...{
             type: 2,
